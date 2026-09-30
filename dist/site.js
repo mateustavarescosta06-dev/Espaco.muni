@@ -23,6 +23,7 @@
         button.setAttribute('aria-pressed',String(this.paused));
       });
       this.listeners.forEach(fn=>fn(this.on));
+      document.dispatchEvent(new CustomEvent('muni:motion',{detail:{on:this.on}}));
     }
   };
   document.querySelectorAll('.motion-toggle').forEach(button=>button.addEventListener('click',()=>motion.toggle()));
@@ -66,23 +67,6 @@
     reveals.forEach(el=>io.observe(el));
   }else reveals.forEach(el=>el.classList.add('is-in'));
 
-  /* Manifesto: as palavras acendem com a rolagem. */
-  const statements=[...document.querySelectorAll('[data-words]')].map(el=>{
-    const words=[];
-    const wrap=(text,accent)=>text.split(/(\s+)/).map(part=>{
-      if(!part.trim())return document.createTextNode(part);
-      const span=document.createElement('span');
-      span.className='w'+(accent?' accent':'');span.textContent=part;words.push(span);return span;
-    });
-    [...el.childNodes].forEach(node=>{
-      const accent=node.nodeType===1&&node.hasAttribute('data-accent');
-      const text=node.textContent;
-      node.replaceWith(...wrap(text,accent));
-    });
-    el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
-    return {el,words};
-  });
-
   /* Como funciona: trilho de progresso */
   const process=document.querySelector('[data-process]');
   const rail=process?.querySelector('.process-rail');
@@ -96,12 +80,6 @@
     ticking=0;
     updateHeader();
     const vh=innerHeight;
-    statements.forEach(({el,words})=>{
-      const rect=el.getBoundingClientRect();
-      const p=motion.on?clamp((vh*.88-rect.top)/(rect.height+vh*.4)):1;
-      const lit=Math.round(p*words.length);
-      words.forEach((w,i)=>w.classList.toggle('on',i<lit));
-    });
     if(process){
       const rect=process.getBoundingClientRect();
       const line=vh*.6;
@@ -119,19 +97,6 @@
   addEventListener('scroll',schedule,{passive:true});
   addEventListener('resize',schedule,{passive:true});
   motion.listeners.push(schedule);
-
-  /* Paleta: mostra o nome e copia o código */
-  document.querySelectorAll('.palette').forEach(palette=>{
-    const note=palette.parentElement.querySelector('[data-palette-note]');
-    const swatches=[...palette.querySelectorAll('.swatch')];
-    swatches.forEach(swatch=>swatch.addEventListener('click',async()=>{
-      swatches.forEach(s=>s.classList.toggle('is-active',s===swatch));
-      const hex=swatch.dataset.hex,name=swatch.querySelector('span').textContent;
-      let copied=false;
-      try{await navigator.clipboard.writeText(hex);copied=true;}catch{/* Sem permissão de área de transferência. */}
-      if(note)note.textContent=copied?`${name} · ${hex} copiado.`:`${name} · ${hex}`;
-    }));
-  });
 
   /* Galeria horizontal: arrastar com o mouse e botões */
   document.querySelectorAll('[data-drag]').forEach(rail=>{
@@ -187,65 +152,34 @@
   if(['presencial','online'].includes(params.get('formato')))format=params.get('formato');
   updateChoice();
 
-  /* Fundo vivo: a marca repetida reage ao ponteiro. */
-  (()=>{
-    const sections=[...document.querySelectorAll('.living-pattern')];
-    if(!sections.length)return;
-    let pending=0;
-    const texture=new Image();texture.src='/assets/pattern-unit.png';
-    const states=sections.map(section=>{
-      const canvas=document.createElement('canvas');
-      canvas.className='brand-canvas';canvas.setAttribute('aria-hidden','true');section.prepend(canvas);
-      return {section,canvas,ctx:canvas.getContext('2d'),visible:false,width:0,height:0,x:-500,y:-500,tx:-500,ty:-500};
-    });
-    const draw=()=>{
-      pending=0;
-      if(!texture.complete||!texture.naturalWidth)return;
-      const enabled=motion.on;let unsettled=false;
-      states.forEach(s=>{
-        if(!s.visible)return;
-        const {ctx,width,height}=s;ctx.clearRect(0,0,width,height);
-        s.x+=(s.tx-s.x)*.13;s.y+=(s.ty-s.y)*.13;
-        unsettled||=enabled&&(Math.abs(s.tx-s.x)+Math.abs(s.ty-s.y)>.3);
-        const mobile=width<600,step=mobile?125:170,size=mobile?74:100;
-        const drift=enabled?Math.sin((scrollY+s.section.offsetTop)*.0014)*16:0;
-        for(let row=-1;row<Math.ceil(height/step)+1;row++){
-          for(let col=-1;col<Math.ceil(width/step)+1;col++){
-            let x=col*step+(row%2)*step/2+drift,y=row*step+drift*.5,angle=0,near=0;
-            if(enabled&&s.tx>=0){
-              const dx=x-s.x,dy=y-s.y,d=Math.hypot(dx,dy);near=Math.max(0,1-d/210);
-              if(d>1){x+=dx/d*near*24;y+=dy/d*near*24;}
-              angle=near*.12*(dx<0?-1:1);
-            }
-            ctx.save();ctx.globalAlpha=.05+near*.12;ctx.translate(x,y);ctx.rotate(angle);
-            ctx.drawImage(texture,-size/2,-size/2,size,size*texture.height/texture.width);ctx.restore();
-          }
-        }
-      });
-      if(unsettled)scheduleDraw();
+  /* Caminhos: no desktop, a foto do caminho acompanha o cursor sobre a lista. */
+  document.querySelectorAll('[data-paths]').forEach(list=>{
+    const float=list.querySelector('.path-float');
+    const img=float?.querySelector('img');
+    if(!float||!img)return;
+    const fine=matchMedia('(hover: hover) and (pointer: fine)');
+    let x=0,y=0,cx=0,cy=0,raf=0;
+    const follow=()=>{
+      cx+=(x-cx)*.16;cy+=(y-cy)*.16;
+      float.style.transform=`translate(${cx+36}px,${cy}px) translateY(-50%) rotate(${((x-cx)*.04).toFixed(2)}deg)`;
+      raf=Math.abs(x-cx)+Math.abs(y-cy)>.5?requestAnimationFrame(follow):0;
     };
-    function scheduleDraw(){if(!pending)pending=requestAnimationFrame(draw);}
-    function resize(s){
-      const rect=s.section.getBoundingClientRect();s.width=rect.width;s.height=rect.height;
-      const dpr=Math.min(devicePixelRatio||1,1.5);
-      s.canvas.width=Math.round(rect.width*dpr);s.canvas.height=Math.round(rect.height*dpr);s.ctx.setTransform(dpr,0,0,dpr,0,0);scheduleDraw();
-    }
-    const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{
-      const s=states.find(x=>x.section===entry.target);s.visible=entry.isIntersecting;if(s.visible)resize(s);
-    }),{rootMargin:'60px'});
-    const resizer=new ResizeObserver(entries=>entries.forEach(entry=>{const s=states.find(x=>x.section===entry.target);if(s)resize(s);}));
-    states.forEach(s=>{
-      observer.observe(s.section);resizer.observe(s.section);
-      s.section.addEventListener('pointermove',event=>{
-        if(!motion.on)return;
-        const rect=s.section.getBoundingClientRect();s.tx=event.clientX-rect.left;s.ty=event.clientY-rect.top;scheduleDraw();
-      },{passive:true});
-      s.section.addEventListener('pointerleave',()=>{s.tx=-500;s.ty=-500;scheduleDraw();},{passive:true});
+    list.querySelectorAll('.path-row').forEach(row=>{
+      row.addEventListener('pointerenter',()=>{
+        if(!fine.matches)return;
+        img.src=row.dataset.img;img.alt='';
+        list.classList.add('is-hovering');
+      });
     });
-    addEventListener('scroll',()=>{if(motion.on)scheduleDraw();},{passive:true});
-    texture.onload=scheduleDraw;
-    motion.listeners.push(()=>{states.forEach(s=>{s.tx=s.x=-500;s.ty=s.y=-500;});scheduleDraw();});
-  })();
+    list.addEventListener('pointermove',event=>{
+      if(!fine.matches)return;
+      const rect=list.getBoundingClientRect();
+      x=event.clientX-rect.left;y=event.clientY-rect.top;
+      if(!motion.on){cx=x;cy=y;}
+      if(!raf)raf=requestAnimationFrame(follow);
+    },{passive:true});
+    list.addEventListener('pointerleave',()=>list.classList.remove('is-hovering'));
+  });
 
   motion.sync();
   onScroll();

@@ -89,7 +89,12 @@
     section.style.setProperty('--shade',(1-clamp(p*3)).toFixed(3));
   }
   const canAutoplay=()=>!reduced.matches&&!motionOff&&!userPaused;
-  function load(){if(!source.src){source.src=source.dataset.src;video.load();}}
+  /* No celular, uma versão mais leve do filme (540×960) quando existir. */
+  function load(){
+    if(source.src)return;
+    source.src=matchMedia('(max-width: 760px)').matches&&source.dataset.srcMobile?source.dataset.srcMobile:source.dataset.src;
+    video.load();
+  }
   function syncButton(){
     const playing=!video.paused;
     toggle.textContent=playing?'Pausar filme':'Reproduzir filme';

@@ -27,9 +27,13 @@ Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o cód
 
 Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação por teclado, foco visível, textos alternativos e `playsinline`/`muted` do vídeo. Evite aumentar muito o arquivo de vídeo; a versão atual tem aproximadamente 3,4 MB (H.264, 720×1280, sem áudio).
 
+## Contato e WhatsApp
+
+Os botões com `data-wa` (interesse/formato) e o botão principal do contato (`data-wa-contact`) viram links de WhatsApp com mensagem pronta quando a constante `WHATSAPP` em `site.js` recebe o número (DDI + DDD + número, só dígitos). Com ela vazia, tudo continua levando à página de contato e ao Linktree.
+
 ## Assets
 
-Os arquivos visuais originais estão em `dist/assets/`, inclusive o vídeo `muni-scroll-film.mp4`. `scripts/download-assets.sh` e `.github/workflows/sync-muni-assets.yml` existem apenas como mecanismos de recuperação/sincronização com a versão publicada; para edições normais, trabalhe diretamente nos arquivos locais do repositório.
+Os arquivos visuais originais estão em `dist/assets/`, inclusive o vídeo `muni-scroll-film.mp4`. Depois de adicionar ou trocar fotos, rode `python3 scripts/otimizar-imagens.py` (requer Pillow): ele gera `-1200.webp` e `-640.webp` e reescreve as `<img>` com `srcset`. As páginas usam essas versões; os originais ficam como fonte. No celular, o filme carrega `muni-scroll-film-mobile.mp4` (540×960). `scripts/download-assets.sh` e `.github/workflows/sync-muni-assets.yml` existem apenas como mecanismos de recuperação/sincronização com a versão publicada; para edições normais, trabalhe diretamente nos arquivos locais do repositório.
 
 ## Conteúdo e publicação
 

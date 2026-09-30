@@ -51,6 +51,10 @@ O endereço atual do ChatGPT Sites **não fica sincronizado automaticamente com 
 
 `vercel.json` publica a pasta `dist` como site estático, sem build. Importe o repositório em vercel.com (Add New → Project), mantenha as configurações detectadas e faça o deploy. Cada branch enviada ao GitHub ganha uma URL de prévia própria.
 
+## Imagens
+
+Depois de adicionar fotos em `dist/assets/`, rode `python3 scripts/otimizar-imagens.py` para gerar as versões WebP usadas pelo site.
+
 ## Verificações rápidas
 
 ```sh

@@ -128,18 +128,37 @@
 
   /* Universo: galeria com troca suave */
   const gallery=[
-    ['muni-digital.jpg','Identidade digital MUNI em notebook','01 / CONEXÃO'],
-    ['higgsfield-objects.webp','Objetos conceituais com identidade MUNI','02 / CUIDADO'],
-    ['equipe-muni.jpg','Bia e Bruno em frente à parede com a marca MUNI','03 / ENCONTROS'],
-    ['ritual-muni.jpg','Caneca verde com o símbolo MUNI','04 / RITUAL']
+    ['muni-digital-1200.webp','Identidade digital MUNI em notebook','01 / CONEXÃO'],
+    ['higgsfield-objects-1200.webp','Objetos conceituais com identidade MUNI','02 / CUIDADO'],
+    ['equipe-muni-1200.webp','Bia e Bruno em frente à parede com a marca MUNI','03 / ENCONTROS'],
+    ['ritual-muni-1200.webp','Caneca verde com o símbolo MUNI','04 / RITUAL']
   ];
   const galleryImage=document.querySelector('#gallery-image');
   document.querySelectorAll('[data-gallery]').forEach(button=>button.addEventListener('click',()=>{
     const [src,alt,caption]=gallery[Number(button.dataset.gallery)];
-    const show=()=>{galleryImage.src='/assets/'+src;galleryImage.alt=alt;document.querySelector('#gallery-caption').textContent=caption;galleryImage.classList.remove('swap');};
+    const show=()=>{galleryImage.src='/assets/'+src;galleryImage.srcset='/assets/'+src.replace('-1200.webp','-640.webp')+' 640w, '+'/assets/'+src+' 1200w';galleryImage.alt=alt;document.querySelector('#gallery-caption').textContent=caption;galleryImage.classList.remove('swap');};
     if(motion.on){galleryImage.classList.add('swap');setTimeout(show,220);}else show();
     document.querySelectorAll('[data-gallery]').forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});
   }));
+
+  /* WhatsApp: com o número preenchido, os botões de interesse abrem a conversa com uma mensagem pronta.
+     Sem número, eles continuam levando à página de contato. Formato: DDI + DDD + número, só dígitos. */
+  const WHATSAPP='';
+  const labels={nutricao:'nutrição',treinamento:'treinamento',integrado:'nutrição + treinamento',presencial:'presencial, em Jundiaí',online:'online'};
+  const waMessage=(area,fmt)=>{
+    let text='Olá! Vim pelo site da MUNI';
+    if(area)text+=` e quero conhecer ${labels[area]}`;
+    if(fmt)text+=`${area?',':' e prefiro o atendimento'} ${area?'no formato ':''}${labels[fmt]}`;
+    return text+'.';
+  };
+  const waLink=(area,fmt)=>`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(waMessage(area,fmt))}`;
+  if(WHATSAPP){
+    document.querySelectorAll('a[data-wa]').forEach(link=>{
+      const q=new URLSearchParams(link.getAttribute('href').split('?')[1]||'');
+      link.href=waLink(q.get('interesse'),q.get('formato'));
+      link.target='_blank';link.rel='noopener';
+    });
+  }
 
   /* Contato: escolha de área e formato */
   let interest='',format='';
@@ -151,6 +170,13 @@
     document.querySelector('#choice-detail').textContent=interest&&format?'Esse é seu ponto de partida. A equipe explica os atendimentos e a disponibilidade.':'Depois, converse com a equipe pelos canais da MUNI.';
     document.querySelectorAll('[data-interest]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.interest===interest)));
     document.querySelectorAll('[data-format]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.format===format)));
+    const contactLink=document.querySelector('[data-wa-contact]');
+    if(WHATSAPP&&contactLink){
+      contactLink.href=waLink(interest,format);
+      contactLink.textContent='Conversar no WhatsApp ↗';
+      const note=document.querySelector('.contact-note');
+      if(note)note.textContent='Abre o WhatsApp da MUNI com uma mensagem pronta, a partir das suas escolhas. Nada é enviado sem você confirmar.';
+    }
   }
   document.querySelectorAll('[data-interest]').forEach(b=>b.addEventListener('click',()=>{interest=b.dataset.interest;updateChoice();}));
   document.querySelectorAll('[data-format]').forEach(b=>b.addEventListener('click',()=>{format=b.dataset.format;updateChoice();}));
@@ -244,35 +270,6 @@
     });
     const initial=new URLSearchParams(location.search).get('formato');
     const match=tabs.find(t=>t.dataset.fmt===initial);if(match)select(match);
-  });
-
-  /* Caminhos: no desktop, a foto do caminho acompanha o cursor sobre a lista. */
-  document.querySelectorAll('[data-paths]').forEach(list=>{
-    const float=list.querySelector('.path-float');
-    const img=float?.querySelector('img');
-    if(!float||!img)return;
-    const fine=matchMedia('(hover: hover) and (pointer: fine)');
-    let x=0,y=0,cx=0,cy=0,raf=0;
-    const follow=()=>{
-      cx+=(x-cx)*.16;cy+=(y-cy)*.16;
-      float.style.transform=`translate(${cx+36}px,${cy}px) translateY(-50%) rotate(${((x-cx)*.04).toFixed(2)}deg)`;
-      raf=Math.abs(x-cx)+Math.abs(y-cy)>.5?requestAnimationFrame(follow):0;
-    };
-    list.querySelectorAll('.path-row').forEach(row=>{
-      row.addEventListener('pointerenter',()=>{
-        if(!fine.matches)return;
-        img.src=row.dataset.img;img.alt='';
-        list.classList.add('is-hovering');
-      });
-    });
-    list.addEventListener('pointermove',event=>{
-      if(!fine.matches)return;
-      const rect=list.getBoundingClientRect();
-      x=event.clientX-rect.left;y=event.clientY-rect.top;
-      if(!motion.on){cx=x;cy=y;}
-      if(!raf)raf=requestAnimationFrame(follow);
-    },{passive:true});
-    list.addEventListener('pointerleave',()=>list.classList.remove('is-hovering'));
   });
 
   motion.sync();

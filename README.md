@@ -1,8 +1,8 @@
 # Espaço MUNI
 
-Código editável do site do Espaço MUNI — nutrição e treinamento em Jundiaí e online. A versão publicada atualmente está em:
+Código completo e editável do site do Espaço MUNI — nutrição e treinamento em Jundiaí e online.
 
-https://espaco-muni.mateus-tavarescosta0.chatgpt.site
+Site publicado atualmente: `https://espaco-muni.mateus-tavarescosta0.chatgpt.site`
 
 ## Rodar localmente
 
@@ -24,22 +24,11 @@ Abra `http://localhost:8000`. Sirva sempre a pasta `dist` como raiz, pois as rot
 - `dist/style.css`: estilos e responsividade.
 - `dist/site.js`: navegação, campanhas, galeria, contato e fundo interativo.
 - `dist/film.js`: filme controlado pela rolagem e reprodução manual.
+- `dist/assets/`: logotipo, imagens editoriais, texturas e o vídeo do filme.
 - `.openai/hosting.json`: configuração do projeto publicado no ChatGPT Sites.
 - `CLAUDE.md`: orientações para Claude Code/Codex.
 
-`dist` é o código-fonte editável deste projeto, apesar do nome.
-
-## Assets
-
-O pacote exportado do ChatGPT Sites contém os binários originais (imagens e vídeo), mas o conector usado para sincronizar este repositório não consegue anexar arquivos binários grandes. Por isso, esta versão do código referencia diretamente os assets da publicação atual em `chatgpt.site`.
-
-Isso mantém o site visualmente funcional e deixa HTML/CSS/JS totalmente editáveis pelo Claude. Para baixar uma cópia local dos assets, rode:
-
-```sh
-bash scripts/download-assets.sh
-```
-
-Depois disso, se quiser tornar o repositório 100% autônomo, substitua as URLs absolutas por `/assets/...` e versione `dist/assets/`. Veja `ASSETS.md`.
+`dist` é o código-fonte efetivo deste projeto, apesar do nome. O repositório inclui os assets originais exportados da versão publicada, inclusive `muni-scroll-film.mp4`.
 
 ## Editar pelo Claude Code ou Codex
 
@@ -53,9 +42,13 @@ Sugestão de pedido:
 
 Paleta principal: `#F1FFBB`, `#BAC976`, `#606060`, `#CFCFCF`, `#858077`, com fundo `#FAFBF5` e texto `#41443C`. Tipografia: DM Sans e Cormorant Garamond. Estética boutique, frases curtas, imagens grandes e bastante respiro.
 
+## Assets
+
+Os assets estão versionados em `dist/assets/`. O arquivo `scripts/download-assets.sh` e o workflow `.github/workflows/sync-muni-assets.yml` permitem recuperar novamente os arquivos da versão publicada se necessário. Consulte `ASSETS.md`.
+
 ## Publicação
 
-O site atual no ChatGPT Sites **não fica sincronizado automaticamente com o GitHub**. Alterações neste repositório não mudam a URL publicada até que sejam publicadas novamente ou que se configure uma hospedagem ligada ao GitHub.
+O endereço atual do ChatGPT Sites **não fica sincronizado automaticamente com o GitHub**. Alterações neste repositório não mudam a URL publicada até que sejam publicadas novamente no Sites ou que se configure uma hospedagem ligada ao GitHub servindo a pasta `dist`.
 
 ## Verificações rápidas
 

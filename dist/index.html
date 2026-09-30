@@ -90,25 +90,29 @@
       <h2>Emagrecer não é só <span class="strike">comer menos.</span> Nem <span class="strike">treinar mais.</span></h2>
       <p class="lead">É fazer escolhas certas no treino e na dieta, que você consegue manter. Perder peso com qualidade, preservando o que importa.</p>
     </div>
-    <div class="truth-grid">
-      <article class="truth-col" data-reveal>
-        <span class="eyebrow">Na nutrição</span>
+    <div class="truth-split" data-truth-switch data-active="nutricao">
+      <div class="truth-tabs" role="tablist" aria-label="Escolha a área">
+        <button type="button" role="tab" id="tt-nutricao" aria-selected="true" aria-controls="tp-nutricao" data-truth="nutricao">Nutrição</button>
+        <button type="button" role="tab" id="tt-treino" aria-selected="false" aria-controls="tp-treino" data-truth="treino" tabindex="-1">Treino</button>
+      </div>
+      <article class="truth-col" id="tp-nutricao" role="tabpanel" aria-labelledby="tt-nutricao" data-panel="nutricao" data-reveal>
+        <span class="eyebrow dot">Na nutrição</span>
         <h3>O melhor plano é o que você <em>consegue seguir.</em></h3>
-        <ol class="truth-list">
-          <li><b>Déficit calórico</b><span>A base do emagrecimento, ajustada para você.</span></li>
-          <li><b>Saciedade</b><span>Comer bem e se sentir satisfeito. Passar fome não é o plano.</span></li>
-          <li><b>Adesão</b><span>Um plano que cabe na rotina e não vira um fardo.</span></li>
-        </ol>
+        <dl class="truth-terms">
+          <div><dt>Déficit calórico</dt><dd>A base do emagrecimento, ajustada para você.</dd></div>
+          <div><dt>Saciedade</dt><dd>Comer bem e se sentir satisfeito. Passar fome não é o plano.</dd></div>
+          <div><dt>Adesão</dt><dd>Um plano que cabe na rotina e não vira um fardo.</dd></div>
+        </dl>
         <a class="link-arrow" href="/nutricao/">Conhecer a nutrição <span aria-hidden="true">›</span></a>
       </article>
-      <article class="truth-col is-dark" data-reveal="2">
-        <span class="eyebrow">No treino</span>
+      <article class="truth-col" id="tp-treino" role="tabpanel" aria-labelledby="tt-treino" data-panel="treino" data-reveal="2">
+        <span class="eyebrow dot">No treino</span>
         <h3>O ponto não é só <em>queimar caloria.</em></h3>
-        <ol class="truth-list">
-          <li><b>Massa muscular</b><span>Preservar músculo enquanto emagrece.</span></li>
-          <li><b>Qualidade</b><span>Perder peso com qualidade, não a qualquer custo.</span></li>
-          <li><b>Constância</b><span>Um treino que você consegue manter.</span></li>
-        </ol>
+        <dl class="truth-terms">
+          <div><dt>Massa muscular</dt><dd>Preservar músculo enquanto emagrece.</dd></div>
+          <div><dt>Qualidade</dt><dd>Perder peso com qualidade, não a qualquer custo.</dd></div>
+          <div><dt>Constância</dt><dd>Um treino que você consegue manter.</dd></div>
+        </dl>
         <a class="link-arrow" href="/treinamento/">Conhecer o treinamento <span aria-hidden="true">›</span></a>
       </article>
     </div>

@@ -114,20 +114,20 @@ img,video,svg{max-width:100%;display:block}
 .strike+.strike:after,.truth-head h2 .strike:nth-of-type(2):after{transition-delay:1.1s}
 .is-in .strike:after,.no-js .strike:after{transform:scaleX(1)}
 .is-in .strike{color:#85807799}
-.truth-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(14px,2vw,24px)}
-.truth-col{padding:clamp(32px,4vw,60px);background:var(--lime);display:flex;flex-direction:column;align-items:flex-start}
-.truth-col.is-dark{background:#4d4e4a;color:var(--paper)}
+
+.truth-split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+.truth-tabs{display:none}
+.truth-col{min-width:0;padding:clamp(34px,4vw,56px) clamp(24px,4vw,64px) 8px 0;display:flex;flex-direction:column;align-items:flex-start}
+.truth-col+.truth-col{padding-left:clamp(24px,4vw,64px);padding-right:0;border-left:1px solid var(--line)}
 .truth-col .eyebrow{color:var(--green-deep)}
-.truth-col.is-dark .eyebrow{color:var(--green)}
-.truth-col h3{font-size:clamp(36px,3.6vw,58px);margin:16px 0 30px}
+.truth-col .eyebrow.dot:before{background:var(--green)}
+.truth-col[data-panel=treino] .eyebrow.dot:before{background:var(--taupe)}
+.truth-col h3{font-size:clamp(34px,3.2vw,52px);margin:16px 0 26px;max-width:14em}
 .truth-col h3 em{color:var(--green-deep)}
-.truth-col.is-dark h3 em{color:var(--lime)}
-.truth-list{counter-reset:t;width:100%;margin-bottom:32px}
-.truth-list li{counter-increment:t;display:grid;grid-template-columns:44px 1fr;gap:4px 16px;padding:18px 0;border-top:1px solid #41443c26}
-.truth-col.is-dark .truth-list li{border-color:#fafbf526}
-.truth-list li:before{content:counter(t,decimal-leading-zero);grid-row:span 2;font-size:11px;letter-spacing:.16em;padding-top:10px;opacity:.7}
-.truth-list b{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.3vw,34px);line-height:1.1}
-.truth-list span{font-size:15px;opacity:.85}
+.truth-terms{margin:0 0 30px;width:100%}
+.truth-terms div{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:6px 24px;align-items:baseline;padding:16px 0;border-top:1px solid var(--line)}
+.truth-terms dt{font-family:var(--serif);font-size:clamp(22px,1.9vw,28px);line-height:1.1}
+.truth-terms dd{margin:0;font-size:15px;color:var(--graphite)}
 
 /* Quem cuida de você */
 
@@ -543,7 +543,17 @@ img,video,svg{max-width:100%;display:block}
   .path-go{grid-area:go;justify-self:start;margin-top:8px}
   .path-float{display:none}
   .manifesto:after{background:radial-gradient(ellipse 95% 50% at 50% 50%,#fafbf5 45%,#fafbf5d9 68%,#fafbf500 100%)}
-  .truth-grid,.team,.format-switch{grid-template-columns:1fr}
+  .team,.format-switch{grid-template-columns:1fr}
+  .truth-split{grid-template-columns:1fr;border-top:0}
+  .truth-tabs{display:inline-flex;border:1px solid var(--ink);margin-bottom:6px;justify-self:start}
+  .truth-tabs button{background:none;border:0;padding:12px 22px;font-size:11px;letter-spacing:.22em;text-transform:uppercase}
+  .truth-tabs button[aria-selected=true]{background:var(--ink);color:var(--lime)}
+  .truth-col,.truth-col+.truth-col{padding:22px 0 0;border-left:0}
+  .truth-col .eyebrow{display:none}
+  .truth-col h3{font-size:clamp(32px,8.6vw,40px);margin:4px 0 18px}
+  .truth-split[data-active=nutricao] [data-panel=treino],.truth-split[data-active=treino] [data-panel=nutricao]{display:none}
+  .truth-terms{margin-bottom:24px}
+  .truth-terms div{grid-template-columns:1fr;gap:2px;padding:13px 0}
   .team-photo{min-height:0}
   .team-photo img{position:relative;height:auto;aspect-ratio:1122/1250;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent)}
   .team-copy{padding:0 var(--gutter) 90px;margin-top:-60px;position:relative}

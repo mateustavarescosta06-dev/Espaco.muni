@@ -198,6 +198,23 @@
     motion.listeners.push(on=>{if(!on){svg.classList.remove('is-drawing');svg.classList.add('is-drawn');}});
   });
 
+  /* Emagrecer com saúde: no celular, um lado por vez */
+  document.querySelectorAll('[data-truth-switch]').forEach(box=>{
+    const tabs=[...box.querySelectorAll('[role=tab]')];
+    const select=tab=>{
+      tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;});
+      box.dataset.active=tab.dataset.truth;
+      box.querySelectorAll('[data-panel]').forEach(panel=>panel.classList.add('is-in'));
+    };
+    tabs.forEach((tab,i)=>{
+      tab.addEventListener('click',()=>select(tab));
+      tab.addEventListener('keydown',event=>{
+        if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;
+        event.preventDefault();const next=tabs[(i+1)%tabs.length];select(next);next.focus();
+      });
+    });
+  });
+
   /* Formatos: seletor presencial/online */
   document.querySelectorAll('[data-format-switch]').forEach(box=>{
     const tabs=[...box.querySelectorAll('[role=tab]')];

@@ -203,6 +203,15 @@
     },{passive:true});
   });
 
+  /* Equipe: a etiqueta de quem está em foco no texto acende sobre a foto. */
+  document.querySelectorAll('.team-duo').forEach(duo=>{
+    const members=[...duo.querySelectorAll('.duo-copy .member')];
+    const highlight=i=>{duo.classList.toggle('hl-0',i===0);duo.classList.toggle('hl-1',i===1);};
+    members.forEach((m,i)=>m.addEventListener('pointerenter',()=>highlight(i)));
+    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)highlight(members.indexOf(entry.target));}),{rootMargin:'-45% 0px -45% 0px'});
+    members.forEach(m=>io.observe(m));
+  });
+
   /* Caminhos: no desktop, a foto do caminho acompanha o cursor sobre a lista. */
   document.querySelectorAll('[data-paths]').forEach(list=>{
     const float=list.querySelector('.path-float');

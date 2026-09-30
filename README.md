@@ -47,6 +47,10 @@ Os assets estão versionados em `dist/assets/`. O arquivo `scripts/download-asse
 
 O endereço atual do ChatGPT Sites **não fica sincronizado automaticamente com o GitHub**. Alterações neste repositório não mudam a URL publicada até que sejam publicadas novamente no Sites ou que se configure uma hospedagem ligada ao GitHub servindo a pasta `dist`.
 
+## Prévia na Vercel
+
+`vercel.json` publica a pasta `dist` como site estático, sem build. Importe o repositório em vercel.com (Add New → Project), mantenha as configurações detectadas e faça o deploy. Cada branch enviada ao GitHub ganha uma URL de prévia própria.
+
 ## Verificações rápidas
 
 ```sh

@@ -175,10 +175,12 @@ img,video,svg{max-width:100%;display:block}
 .format-switch[data-active=presencial] .arch img[data-for=presencial],.format-switch[data-active=online] .arch img[data-for=online]{opacity:1;transform:none}
 .arch-tall img[data-for=online]{object-position:50% 45%}
 
-/* O M se formando */
-.m-form{width:clamp(180px,22vw,300px);height:auto;overflow:visible;margin-bottom:34px}
-.m-form polyline,.m-form line{fill:none;stroke:var(--green-deep);stroke-width:18;stroke-linecap:round;stroke-linejoin:round}
-.m-form .m-bars line{transition:opacity .4s}
+/* O M se formando: traço contínuo */
+.m-form{width:clamp(180px,22vw,300px);height:auto;overflow:visible;margin-bottom:34px;cursor:pointer}
+.m-form .m-path{fill:none;stroke:#7d9c5b;stroke-width:34;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1 1.02}
+.m-form.is-ready .m-path{stroke-dashoffset:1}
+.m-form.is-drawing .m-path{stroke-dashoffset:0;transition:stroke-dashoffset 3.2s cubic-bezier(.45,.05,.35,1)}
+.m-form.is-drawn .m-path,.no-js .m-form .m-path{stroke-dashoffset:0;transition:none}
 
 /* Avaliação física (treinamento) */
 .assessment{background:var(--lime)}

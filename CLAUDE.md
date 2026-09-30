@@ -18,7 +18,7 @@ Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o cód
 - "Perto. Mesmo de longe.": seletor Presencial/Online (`[data-format-switch]`) com fotos reais do espaço em arcos, ecoando os arcos do símbolo M. Não use a foto do grupo da inauguração.
 - Fundos integrados: as seções se fundem às vizinhas por degradês (bloco "Fundos integrados" em `style.css`); ao mudar a ordem das seções, ajuste esses degradês.
 - Equipe: foto da Bia e do Bruno (`equipe-muni.jpg`) dissolvida no verde-sálvia da parede (#88A597); não recorte a foto da dupla em retratos separados.
-- O M se formando (`[data-mform]`): traços sobem, desenham a letra M e se curvam no símbolo MUNI (caminhos `LETTER` e `SYMBOL` em `site.js`). Usado acima do manifesto; toque para repetir.
+- O M se formando (`[data-mform]`): o símbolo MUNI é desenhado num único traço contínuo, na ordem da animação oficial (haste do arco alto → diagonal → arco direito → base → laço → onda → arco pequeno). O caminho fica no SVG do manifesto; a animação é CSS (`stroke-dashoffset`). Toque para repetir.
 - Não sobreponha vários blocos de texto ou logos sobre o assunto principal do filme.
 
 ## Interações

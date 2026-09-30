@@ -183,46 +183,19 @@
     motion.listeners.push(on=>{if(!on)section.classList.remove('is-lit');else if(visible&&!raf)raf=requestAnimationFrame(wander);});
   });
 
-  /* O M se formando: traços sobem, desenham a letra M e se curvam no símbolo MUNI. */
-  const SVGNS='http://www.w3.org/2000/svg';
-  const LETTER='M18 262V30L232 200L445 30V262';
-  const SYMBOL='M70 262H18V155A26 26 0 0 1 70 155V50A27.5 27.5 0 0 1 125 50L162 205C172 248 204 262 216 222C232 160 262 128 292 128C312 128 322 150 322 172V262H445V50A27.5 27.5 0 0 0 390 50L205 250';
-  const sample=(svg,d,n)=>{
-    const path=document.createElementNS(SVGNS,'path');path.setAttribute('d',d);path.setAttribute('visibility','hidden');svg.appendChild(path);
-    const len=path.getTotalLength(),pts=[];
-    for(let i=0;i<n;i++){const pt=path.getPointAtLength(len*i/(n-1));pts.push([pt.x,pt.y]);}
-    path.remove();return pts;
-  };
-  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  /* O M se formando: o símbolo MUNI é desenhado num traço contínuo, como uma caneta. */
   document.querySelectorAll('[data-mform]').forEach(svg=>{
-    const line=svg.querySelector('.m-line'),bars=svg.querySelector('.m-bars');
-    const N=260,from=sample(svg,LETTER,N),to=sample(svg,SYMBOL,N);
-    const xs=[18,125,232,338,445];
-    const barEls=xs.map(x=>{const l=document.createElementNS(SVGNS,'line');l.setAttribute('x1',x);l.setAttribute('x2',x);l.setAttribute('y1',262);l.setAttribute('y2',262);bars.appendChild(l);return l;});
-    const draw=(pts,count=pts.length)=>line.setAttribute('points',pts.slice(0,Math.max(2,count)).map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' '));
-    const finish=()=>{barEls.forEach(b=>b.style.opacity=0);draw(to);};
-    let raf=0,start=0,played=false;
-    const frame=time=>{
-      if(!start)start=time;
-      const t=(time-start)/1000;
-      barEls.forEach((b,i)=>{
-        const k=ease(Math.min(1,Math.max(0,(t-i*.08)/.55)));
-        b.setAttribute('y2',(262-k*(150+((i*53)%90))).toFixed(1));
-        b.style.opacity=t<.75?1:Math.max(0,1-(t-.75)/.35);
-      });
-      if(t<.7){line.setAttribute('points','');}
-      else if(t<1.5){draw(from,Math.round(ease((t-.7)/.8)*N));}
-      else{
-        const k=ease(Math.min(1,Math.max(0,(t-1.7)/1.2)));
-        draw(from.map((p,i)=>[p[0]+(to[i][0]-p[0])*k,p[1]+(to[i][1]-p[1])*k]));
-      }
-      raf=t<3?requestAnimationFrame(frame):0;
+    let played=false;
+    const play=()=>{
+      svg.classList.remove('is-drawn','is-drawing');
+      if(!motion.on){svg.classList.add('is-drawn');return;}
+      void svg.getBoundingClientRect();
+      svg.classList.add('is-drawing');
     };
-    const play=()=>{if(!motion.on){finish();return;}cancelAnimationFrame(raf);start=0;raf=requestAnimationFrame(frame);};
-    finish();
+    svg.classList.add('is-ready');
     new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!played){played=true;play();}},{threshold:.5}).observe(svg);
     svg.addEventListener('click',play);
-    motion.listeners.push(on=>{if(!on){cancelAnimationFrame(raf);finish();}});
+    motion.listeners.push(on=>{if(!on){svg.classList.remove('is-drawing');svg.classList.add('is-drawn');}});
   });
 
   /* Formatos: seletor presencial/online */

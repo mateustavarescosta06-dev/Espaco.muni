@@ -1,8 +1,6 @@
 # Assets do site
 
-Os arquivos abaixo fazem parte do pacote original exportado do ChatGPT Sites. Nesta sincronização, o código aponta para os equivalentes hospedados em:
-
-`https://espaco-muni.mateus-tavarescosta0.chatgpt.site/assets/`
+Os assets originais do export do Espaço MUNI estão versionados em `dist/assets/`.
 
 Arquivos:
 
@@ -23,4 +21,12 @@ Arquivos:
 - `portal-nutrir.jpg`
 - `ritual-muni.jpg`
 
-Para baixar todos localmente, rode `bash scripts/download-assets.sh`.
+A cópia atual foi recuperada diretamente da versão publicada em `https://espaco-muni.mateus-tavarescosta0.chatgpt.site` e commitada pelo workflow `Sync MUNI assets`.
+
+Se algum arquivo precisar ser restaurado a partir da publicação atual, use:
+
+```sh
+bash scripts/download-assets.sh
+```
+
+O workflow `.github/workflows/sync-muni-assets.yml` também pode ser executado manualmente no GitHub Actions para refazer essa sincronização. Em edições normais, altere diretamente os arquivos em `dist/assets/`.

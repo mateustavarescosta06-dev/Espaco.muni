@@ -132,18 +132,20 @@ img,video,svg{max-width:100%;display:block}
 /* Quem cuida de você */
 
 /* Equipe: a foto se dissolve na cor da parede */
-.team{--sage:#88a597;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);background:linear-gradient(180deg,#809b8e,#8dab9e);color:#1e211b;overflow:hidden}
-.team-photo{position:relative;margin:0;min-height:100%}
-.team-photo img{position:sticky;top:0;width:100%;height:min(100svh,1100px);object-fit:cover;object-position:50% 20%;-webkit-mask-image:linear-gradient(90deg,#000 62%,transparent 98%),linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 62%,transparent 98%),linear-gradient(180deg,transparent 0,#000 12%,#000 88%,transparent 100%);mask-composite:intersect}
-.team-copy{padding:clamp(80px,10vw,150px) var(--gutter) clamp(80px,10vw,150px) clamp(10px,2vw,40px);display:grid;gap:clamp(56px,8vw,110px)}
+/* Equipe: foto na altura do conteúdo, fundida ao verde da parede */
+.team{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);color:#1e211b;--pattern-color:#fff;--pattern-opacity:.07;background:linear-gradient(180deg,var(--paper) 0,#8dab9e 150px,#88a597 55%,#7d9488 84%,#4d4e4a 100%)}
+.team-photo{position:relative;margin:0;min-height:560px}
+.team-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;-webkit-mask-image:linear-gradient(90deg,#000 60%,transparent 99%),linear-gradient(180deg,transparent 0,#000 16%,#000 80%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,#000 60%,transparent 99%),linear-gradient(180deg,transparent 0,#000 16%,#000 80%,transparent 100%);mask-composite:intersect}
+.team-copy{padding:clamp(110px,10vw,160px) var(--gutter) clamp(110px,10vw,160px) clamp(10px,2vw,40px);display:grid;gap:clamp(40px,5vw,64px);align-content:center}
+.members{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3.5vw,56px)}
 .team .eyebrow{color:#2f3a31}
 .team-head h2{font-size:clamp(46px,5.4vw,88px);margin:20px 0 20px}
 .team-head h2 em{color:var(--paper)}
 .team-head p{max-width:26em;color:#26291f}
-.member h3{font-size:clamp(84px,10vw,160px);line-height:.85;font-style:italic;color:var(--paper);margin:12px 0 22px}
-.member-quote{font-family:var(--serif);font-size:clamp(26px,2.4vw,38px);line-height:1.15;margin-bottom:16px;max-width:18em}
+.member h3{font-size:clamp(64px,6.4vw,110px);line-height:.85;font-style:italic;color:var(--paper);margin:10px 0 18px}
+.member-quote{font-family:var(--serif);font-size:clamp(22px,1.9vw,30px);line-height:1.15;margin-bottom:14px;max-width:18em}
 .member-quote em{color:var(--paper)}
-.member>p:not(.member-quote){color:#26291f;max-width:30em;margin-bottom:24px}
+.member>p:not(.member-quote){color:#26291f;font-size:15px;max-width:30em;margin-bottom:22px}
 .member .link-arrow{color:#1e211b}
 
 /* Formatos: seletor presencial/online e fotos em arcos (os arcos do símbolo M) */
@@ -360,8 +362,8 @@ img,video,svg{max-width:100%;display:block}
 @keyframes pattern-drift{to{transform:translate(160px,200px)}}
 
 /* Manifesto sobre o padrão */
-.manifesto{background:#fff;padding:clamp(100px,13vw,190px) 0;text-align:center;--pattern-color:var(--green);--pattern-opacity:.55}
-.manifesto:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 50% 58% at 50% 50%,#fff 35%,#ffffffe6 55%,#ffffff00 100%)}
+.manifesto{background:var(--paper);padding:clamp(100px,13vw,190px) 0;text-align:center;--pattern-color:var(--green);--pattern-opacity:.55}
+.manifesto:after{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse 50% 58% at 50% 50%,#fafbf5 35%,#fafbf5e6 55%,#fafbf500 100%)}
 .manifesto-inner{display:flex;flex-direction:column;align-items:center}
 .manifesto .eyebrow{color:var(--green-deep)}
 .manifesto blockquote{margin:28px auto 36px;max-width:15em;font-family:var(--serif);font-size:clamp(40px,5.4vw,88px);line-height:1.04;letter-spacing:-.015em;color:var(--ink)}
@@ -406,6 +408,15 @@ img,video,svg{max-width:100%;display:block}
 .footer{--pattern-color:#fff;--pattern-opacity:.07}
 .contact-intro{--pattern-color:#fff;--pattern-opacity:.75}
 .contact-intro:after{content:'';position:absolute;inset:0;z-index:-1;background:linear-gradient(100deg,var(--lime) 35%,#f1ffbbb3 70%,#f1ffbb40)}
+
+
+/* Fundos integrados: cada seção se funde à vizinha */
+.truth{background:linear-gradient(180deg,#2a2b26 0,var(--paper) 130px)}
+.process{background:linear-gradient(180deg,#4d4e4a calc(100% - 170px),var(--paper) 100%)}
+.paths{background:linear-gradient(180deg,var(--paper) calc(100% - 150px),var(--graphite) 100%)}
+.blend-from-lime{background:linear-gradient(180deg,var(--lime) 0,var(--paper) 220px)}
+.together{background:linear-gradient(180deg,var(--paper) 0,var(--graphite) 110px);padding-top:clamp(150px,15vw,210px)}
+.page-hero+.manifesto{background:linear-gradient(180deg,var(--graphite) 0,var(--paper) 160px)}
 
 /* Revelação na rolagem */
 .js [data-reveal]{opacity:0;transform:translateY(28px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
@@ -506,10 +517,12 @@ img,video,svg{max-width:100%;display:block}
   .path-line{grid-area:line;font-size:18px}
   .path-go{grid-area:go;justify-self:start;margin-top:8px}
   .path-float{display:none}
-  .manifesto:after{background:radial-gradient(ellipse 95% 50% at 50% 50%,#fff 45%,#ffffffd9 68%,#ffffff00 100%)}
+  .manifesto:after{background:radial-gradient(ellipse 95% 50% at 50% 50%,#fafbf5 45%,#fafbf5d9 68%,#fafbf500 100%)}
   .truth-grid,.team,.format-switch,.assessment-grid{grid-template-columns:1fr}
-  .team-photo img{position:relative;height:auto;aspect-ratio:1122/1250;-webkit-mask-image:linear-gradient(180deg,#000 70%,transparent);mask-image:linear-gradient(180deg,#000 70%,transparent)}
-  .team-copy{padding:0 var(--gutter) 70px;margin-top:-60px;position:relative}
+  .team-photo{min-height:0}
+  .team-photo img{position:relative;height:auto;aspect-ratio:1122/1250;-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent);mask-image:linear-gradient(180deg,transparent 0,#000 12%,#000 70%,transparent)}
+  .team-copy{padding:0 var(--gutter) 90px;margin-top:-60px;position:relative}
+  .members{grid-template-columns:1fr;gap:44px}
   .member h3{font-size:clamp(72px,22vw,110px)}
   .format-facts div{grid-template-columns:1fr;gap:4px}
   .format-arches{order:-1}
@@ -517,3 +530,6 @@ img,video,svg{max-width:100%;display:block}
   .footer-bottom{flex-wrap:wrap}
 }
 .rail-more{margin-top:30px}
+.arch-tall img[src$="equipe-muni-marca.jpg"]{object-position:45% 40%}
+.arch-small img[src$="espaco-sala.jpg"]{object-position:40% 45%}
+.arch-small img[src$="espaco-mesa.jpg"]{object-position:62% 55%}

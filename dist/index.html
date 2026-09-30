@@ -115,38 +115,30 @@
   </div>
 </section>
 
-<section class="section team">
-  <div class="wrap">
+<section class="team">
+  <figure class="team-photo">
+    <img src="/assets/equipe-muni.jpg" alt="Bia e Bruno, da MUNI, sorrindo em frente à parede verde com a marca" loading="lazy">
+  </figure>
+  <div class="team-copy">
     <div class="team-head" data-reveal>
       <span class="eyebrow">Quem cuida de você</span>
       <h2>Nutrição e treino <em>não competem por espaço.</em></h2>
       <p>Eles se encontram, conversam e trabalham juntos para o seu resultado.</p>
     </div>
-    <div class="team-duo">
-      <figure class="duo-photo" data-reveal>
-        <img src="/assets/equipe-muni.jpg" alt="Bia e Bruno, da MUNI, sorrindo em frente à parede verde com a marca" loading="lazy">
-        <figcaption>
-          <span class="duo-tag is-left">Bia · Nutrição</span>
-          <span class="duo-tag is-right">Bruno · Treino</span>
-        </figcaption>
-      </figure>
-      <div class="duo-copy">
-        <article class="member" data-reveal>
-          <span class="eyebrow">Nutrição</span>
-          <h3>Bia</h3>
-          <p class="member-quote">Com a Bia, nada de <em>plano genérico.</em></p>
-          <p>Sua rotina, seus objetivos, seu momento. Tudo isso vira um plano nutricional feito pra você e acompanhado de perto.</p>
-          <a class="link-arrow" href="/nutricao/">Cuidar da alimentação <span aria-hidden="true">›</span></a>
-        </article>
-        <article class="member" data-reveal="2">
-          <span class="eyebrow">Treino</span>
-          <h3>Bruno</h3>
-          <p class="member-quote">Anamnese, avaliação, papo com o Bruno e pronto: seu treino <em>personalizado</em> na sua mão.</p>
-          <p>Tudo no app, com acompanhamento de perto, espaço pra dúvidas e ajustes sempre que precisar.</p>
-          <a class="link-arrow" href="/treinamento/">Treinar com a MUNI <span aria-hidden="true">›</span></a>
-        </article>
-      </div>
-    </div>
+    <article class="member" data-reveal>
+      <span class="eyebrow">Nutrição</span>
+      <h3>Bia</h3>
+      <p class="member-quote">Com a Bia, nada de <em>plano genérico.</em></p>
+      <p>Sua rotina, seus objetivos, seu momento. Tudo isso vira um plano nutricional feito pra você e acompanhado de perto.</p>
+      <a class="link-arrow" href="/nutricao/">Cuidar da alimentação <span aria-hidden="true">›</span></a>
+    </article>
+    <article class="member" data-reveal="2">
+      <span class="eyebrow">Treino</span>
+      <h3>Bruno</h3>
+      <p class="member-quote">Anamnese, avaliação, papo com o Bruno e pronto: seu treino <em>personalizado</em> na sua mão.</p>
+      <p>Tudo no app, com acompanhamento de perto, espaço pra dúvidas e ajustes sempre que precisar.</p>
+      <a class="link-arrow" href="/treinamento/">Treinar com a MUNI <span aria-hidden="true">›</span></a>
+    </article>
   </div>
 </section>
 
@@ -177,34 +169,53 @@
 
 <section class="manifesto pattern-bg" aria-label="Nossa essência">
   <div class="wrap manifesto-inner" data-reveal>
+    <svg class="m-form" viewBox="0 0 463 275" data-mform role="img" aria-label="Símbolo MUNI"><g class="m-bars"></g><polyline class="m-line" points=""/></svg>
     <span class="eyebrow">Nossa essência</span>
     <blockquote>Você é muito mais que uma <em>meta.</em> Seu corpo, sua rotina e seu momento fazem parte do <em>cuidado.</em></blockquote>
-    <img class="manifesto-mark" src="/assets/marca-muni.png" alt="MUNI" width="64" height="69" loading="lazy">
   </div>
 </section>
 
-<section class="section formats spotlight pattern-bg soft" data-spotlight>
-  <div class="spot-layer" aria-hidden="true"></div>
+<section class="section formats pattern-bg soft">
   <div class="wrap">
     <div class="formats-head" data-reveal>
       <span class="eyebrow">Onde você estiver</span>
       <h2>Perto. <em>Mesmo de longe.</em></h2>
-      <p>Presencial em Jundiaí ou online: o mesmo cuidado, no formato que cabe na sua rotina.</p>
     </div>
-    <div class="formats-grid" data-reveal="2">
-      <a class="format-card is-main" href="/contato/?formato=presencial" data-tilt>
-        <span class="format-media"><img src="/assets/encontro-muni-recorte.jpg" alt="Pessoas reunidas no Espaço MUNI, em frente à parede com a marca" loading="lazy"></span>
-        <span class="format-sheen" aria-hidden="true"></span>
-        <span class="format-meta">Rua do Retiro, 424 · Vila Virgínia</span>
-        <span class="format-body"><span><span class="eyebrow">Presencial</span><span class="format-title">Em <em>Jundiaí.</em></span><span class="format-text">Sala 114. Seg a sex, 8h às 20h · Sáb, 8h às 14h. Avaliação física completa no presencial.</span></span><span class="format-go" aria-hidden="true">→</span></span>
-      </a>
-      <span class="formats-and" aria-hidden="true">&amp;</span>
-      <a class="format-card is-offset" href="/contato/?formato=online" data-tilt>
-        <span class="format-media"><img src="/assets/muni-digital.jpg" alt="Notebook com a identidade MUNI sobre uma poltrona" loading="lazy"></span>
-        <span class="format-sheen" aria-hidden="true"></span>
-        <span class="format-meta">Online · onde você estiver</span>
-        <span class="format-body"><span><span class="eyebrow">Online</span><span class="format-title">Onde você <em>estiver.</em></span><span class="format-text">O mesmo cuidado, na sua rotina.</span></span><span class="format-go" aria-hidden="true">→</span></span>
-      </a>
+    <div class="format-switch" data-format-switch data-active="presencial">
+      <div class="format-panel" data-reveal>
+        <div class="format-tabs" role="tablist" aria-label="Formato de atendimento">
+          <button type="button" role="tab" id="tab-presencial" aria-selected="true" aria-controls="fmt-presencial" data-fmt="presencial">Presencial</button>
+          <button type="button" role="tab" id="tab-online" aria-selected="false" aria-controls="fmt-online" data-fmt="online" tabindex="-1">Online</button>
+        </div>
+        <div class="format-pane" role="tabpanel" id="fmt-presencial" aria-labelledby="tab-presencial">
+          <h3>Em <em>Jundiaí.</em></h3>
+          <p>Um espaço para se cuidar de perto, com avaliação física completa: adipometria, circunferências, bioimpedância e avaliação postural.</p>
+          <dl class="format-facts">
+            <div><dt>Endereço</dt><dd>Rua do Retiro, 424 · Sala 114<br>Vila Virgínia, Jundiaí – SP</dd></div>
+            <div><dt>Atendimento</dt><dd>Seg a sex, 8h às 20h<br>Sáb, 8h às 14h</dd></div>
+          </dl>
+          <div class="format-actions"><a class="button solid" href="/contato/?formato=presencial">Agendar no presencial</a><a class="link-arrow" href="https://www.google.com/maps/search/?api=1&amp;query=Rua+do+Retiro%2C+424%2C+Vila+Virg%C3%ADnia%2C+Jundia%C3%AD+-+SP" target="_blank" rel="noopener">Como chegar <span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="format-pane" role="tabpanel" id="fmt-online" aria-labelledby="tab-online" hidden>
+          <h3>Onde você <em>estiver.</em></h3>
+          <p>O mesmo cuidado, na sua rotina. Treino personalizado no app e plano nutricional feito pra você, acompanhados de perto.</p>
+          <dl class="format-facts">
+            <div><dt>Treino</dt><dd>No app, com espaço pra dúvidas<br>e ajustes sempre que precisar</dd></div>
+            <div><dt>Nutrição</dt><dd>Plano feito pra você,<br>nada de plano genérico</dd></div>
+          </dl>
+          <div class="format-actions"><a class="button solid" href="/contato/?formato=online">Começar online</a></div>
+        </div>
+      </div>
+      <div class="format-arches" aria-hidden="true">
+        <figure class="arch arch-small">
+          <img data-for="presencial" src="/assets/ritual-muni.jpg" alt="" loading="lazy">
+          <img data-for="online" src="/assets/higgsfield-nutrition.webp" alt="" loading="lazy">
+        </figure>
+        <figure class="arch arch-tall">
+          <img data-for="presencial" src="/assets/higgsfield-objects.webp" alt="" loading="lazy">
+          <img data-for="online" src="/assets/muni-digital.jpg" alt="" loading="lazy">
+        </figure>
+      </div>
     </div>
   </div>
 </section>

@@ -6,7 +6,7 @@ Arquivos:
 
 - `encontro-muni.jpg`
 - `equipe-muni.jpg` (Bia e Bruno em frente à parede da MUNI, 1122×1402)
-- `encontro-muni-recorte.jpg` (recorte sem os selos de carrossel da foto original; é o usado no site)
+- `encontro-muni-recorte.jpg` (recorte da foto do grupo; não é mais usado no site)
 - `higgsfield-movement.webp`
 - `higgsfield-nutrition.webp`
 - `higgsfield-objects.webp`

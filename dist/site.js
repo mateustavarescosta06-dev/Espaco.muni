@@ -130,7 +130,7 @@
   const gallery=[
     ['muni-digital.jpg','Identidade digital MUNI em notebook','01 / CONEXÃO'],
     ['higgsfield-objects.webp','Objetos conceituais com identidade MUNI','02 / CUIDADO'],
-    ['encontro-muni-recorte.jpg','Encontro na inauguração do Espaço MUNI','03 / ENCONTROS'],
+    ['equipe-muni.jpg','Bia e Bruno em frente à parede com a marca MUNI','03 / ENCONTROS'],
     ['ritual-muni.jpg','Caneca verde com o símbolo MUNI','04 / RITUAL']
   ];
   const galleryImage=document.querySelector('#gallery-image');
@@ -183,33 +183,64 @@
     motion.listeners.push(on=>{if(!on)section.classList.remove('is-lit');else if(visible&&!raf)raf=requestAnimationFrame(wander);});
   });
 
-  /* Cartões que inclinam com o cursor */
-  document.querySelectorAll('[data-tilt]').forEach(card=>{
-    card.addEventListener('pointermove',event=>{
-      if(!finePointer.matches||!motion.on)return;
-      const rect=card.getBoundingClientRect();
-      const x=(event.clientX-rect.left)/rect.width,y=(event.clientY-rect.top)/rect.height;
-      card.style.setProperty('--ry',`${((x-.5)*8).toFixed(2)}deg`);
-      card.style.setProperty('--rx',`${((.5-y)*8).toFixed(2)}deg`);
-      card.style.setProperty('--px',`${((.5-x)*18).toFixed(1)}px`);
-      card.style.setProperty('--py',`${((.5-y)*18).toFixed(1)}px`);
-      card.style.setProperty('--gx',`${(x*100).toFixed(1)}%`);
-      card.style.setProperty('--gy',`${(y*100).toFixed(1)}%`);
-      card.classList.add('is-tilting');
-    },{passive:true});
-    card.addEventListener('pointerleave',()=>{
-      card.classList.remove('is-tilting');
-      ['--rx','--ry','--px','--py'].forEach(v=>card.style.removeProperty(v));
-    },{passive:true});
+  /* O M se formando: traços sobem, desenham a letra M e se curvam no símbolo MUNI. */
+  const SVGNS='http://www.w3.org/2000/svg';
+  const LETTER='M18 262V30L232 200L445 30V262';
+  const SYMBOL='M70 262H18V155A26 26 0 0 1 70 155V50A27.5 27.5 0 0 1 125 50L162 205C172 248 204 262 216 222C232 160 262 128 292 128C312 128 322 150 322 172V262H445V50A27.5 27.5 0 0 0 390 50L205 250';
+  const sample=(svg,d,n)=>{
+    const path=document.createElementNS(SVGNS,'path');path.setAttribute('d',d);path.setAttribute('visibility','hidden');svg.appendChild(path);
+    const len=path.getTotalLength(),pts=[];
+    for(let i=0;i<n;i++){const pt=path.getPointAtLength(len*i/(n-1));pts.push([pt.x,pt.y]);}
+    path.remove();return pts;
+  };
+  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  document.querySelectorAll('[data-mform]').forEach(svg=>{
+    const line=svg.querySelector('.m-line'),bars=svg.querySelector('.m-bars');
+    const N=260,from=sample(svg,LETTER,N),to=sample(svg,SYMBOL,N);
+    const xs=[18,125,232,338,445];
+    const barEls=xs.map(x=>{const l=document.createElementNS(SVGNS,'line');l.setAttribute('x1',x);l.setAttribute('x2',x);l.setAttribute('y1',262);l.setAttribute('y2',262);bars.appendChild(l);return l;});
+    const draw=(pts,count=pts.length)=>line.setAttribute('points',pts.slice(0,Math.max(2,count)).map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' '));
+    const finish=()=>{barEls.forEach(b=>b.style.opacity=0);draw(to);};
+    let raf=0,start=0,played=false;
+    const frame=time=>{
+      if(!start)start=time;
+      const t=(time-start)/1000;
+      barEls.forEach((b,i)=>{
+        const k=ease(Math.min(1,Math.max(0,(t-i*.08)/.55)));
+        b.setAttribute('y2',(262-k*(150+((i*53)%90))).toFixed(1));
+        b.style.opacity=t<.75?1:Math.max(0,1-(t-.75)/.35);
+      });
+      if(t<.7){line.setAttribute('points','');}
+      else if(t<1.5){draw(from,Math.round(ease((t-.7)/.8)*N));}
+      else{
+        const k=ease(Math.min(1,Math.max(0,(t-1.7)/1.2)));
+        draw(from.map((p,i)=>[p[0]+(to[i][0]-p[0])*k,p[1]+(to[i][1]-p[1])*k]));
+      }
+      raf=t<3?requestAnimationFrame(frame):0;
+    };
+    const play=()=>{if(!motion.on){finish();return;}cancelAnimationFrame(raf);start=0;raf=requestAnimationFrame(frame);};
+    finish();
+    new IntersectionObserver(entries=>{if(entries[0].isIntersecting&&!played){played=true;play();}},{threshold:.5}).observe(svg);
+    svg.addEventListener('click',play);
+    motion.listeners.push(on=>{if(!on){cancelAnimationFrame(raf);finish();}});
   });
 
-  /* Equipe: a etiqueta de quem está em foco no texto acende sobre a foto. */
-  document.querySelectorAll('.team-duo').forEach(duo=>{
-    const members=[...duo.querySelectorAll('.duo-copy .member')];
-    const highlight=i=>{duo.classList.toggle('hl-0',i===0);duo.classList.toggle('hl-1',i===1);};
-    members.forEach((m,i)=>m.addEventListener('pointerenter',()=>highlight(i)));
-    const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting)highlight(members.indexOf(entry.target));}),{rootMargin:'-45% 0px -45% 0px'});
-    members.forEach(m=>io.observe(m));
+  /* Formatos: seletor presencial/online */
+  document.querySelectorAll('[data-format-switch]').forEach(box=>{
+    const tabs=[...box.querySelectorAll('[role=tab]')];
+    const select=tab=>{
+      tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});
+      box.dataset.active=tab.dataset.fmt;
+    };
+    tabs.forEach((tab,i)=>{
+      tab.addEventListener('click',()=>select(tab));
+      tab.addEventListener('keydown',event=>{
+        if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;
+        event.preventDefault();const next=tabs[(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];select(next);next.focus();
+      });
+    });
+    const initial=new URLSearchParams(location.search).get('formato');
+    const match=tabs.find(t=>t.dataset.fmt===initial);if(match)select(match);
   });
 
   /* Caminhos: no desktop, a foto do caminho acompanha o cursor sobre a lista. */

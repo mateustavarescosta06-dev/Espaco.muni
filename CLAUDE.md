@@ -14,7 +14,10 @@ Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o cód
 - Abertura da home: o filme fica fixo ao fundo ao longo de três telas de rolagem, tocando sozinho em loop (sem som). As informações entram em caixas claras que rolam por cima (Mover, Nutrir, Integrar), alternando lados no desktop para não cobrir o assunto. No desktop, o enquadramento acompanha o assunto do vídeo vertical (panorâmica em `film.js`); no celular, o vídeo ocupa a tela inteira.
 - Fundos: o padrão da marca (`assets/padrao-muni.svg`, MU/NI + "ESPAÇO INTEGRADO DE SAÚDE") preenche seções via `.pattern-bg`, recolorido por `--pattern-color` e `--pattern-opacity`, em deriva lenta.
 - Cores da marca aparecem em movimento (`.color-flow`), nunca como paleta exposta com códigos.
-- Lanterna (`[data-spotlight]` + `.spot-layer`): o cursor acende o padrão MU/NI no fundo; no celular a luz passeia sozinha. Usada em "Como funciona" (faixa escura, traço ondulado, etapa em foco e contador) e em "Perto. Mesmo de longe." (cartões que inclinam com o cursor, `[data-tilt]`).
+- Lanterna (`[data-spotlight]` + `.spot-layer`): o cursor acende o padrão MU/NI no fundo; no celular a luz passeia sozinha. Usada em "Como funciona" (faixa escura, traço ondulado, etapa em foco e contador).
+- "Perto. Mesmo de longe.": seletor Presencial/Online (`[data-format-switch]`) com fotos em arcos, ecoando os arcos do símbolo M. Não use a foto do grupo da inauguração.
+- Equipe: foto da Bia e do Bruno (`equipe-muni.jpg`) dissolvida no verde-sálvia da parede (#88A597); não recorte a foto da dupla em retratos separados.
+- O M se formando (`[data-mform]`): traços sobem, desenham a letra M e se curvam no símbolo MUNI (caminhos `LETTER` e `SYMBOL` em `site.js`). Usado acima do manifesto; toque para repetir.
 - Não sobreponha vários blocos de texto ou logos sobre o assunto principal do filme.
 
 ## Interações

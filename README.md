@@ -16,17 +16,14 @@ Abra `http://localhost:8000`. Sirva sempre a pasta `dist` como raiz, pois as rot
 
 ## Estrutura
 
-- `dist/index.html`: início, campanhas, filme interativo e caminhos de atendimento.
-- `dist/nutricao/index.html`: nutrição.
-- `dist/treinamento/index.html`: treinamento.
-- `dist/universo/index.html`: universo da marca.
-- `dist/contato/index.html`: seleção de interesse e canais de contato.
-- `dist/style.css`: estilos e responsividade.
-- `dist/site.js`: navegação, campanhas, galeria, contato e fundo interativo.
-- `dist/film.js`: filme controlado pela rolagem e reprodução manual.
-- `dist/assets/`: logotipo, imagens editoriais, texturas e o vídeo do filme.
-- `.openai/hosting.json`: configuração do projeto publicado no ChatGPT Sites.
-- `CLAUDE.md`: orientações para Claude Code/Codex.
+- `dist/index.html`: início. Abertura com a assinatura MUNI animada, proposta de valor, pilares (Nutrir / Mover / Integrar), filme controlado pela rolagem, "Como funciona", manifesto, formatos (Jundiaí e online), paleta e galeria, escolha de caminho.
+- `dist/nutricao/index.html` e `dist/treinamento/index.html`: abertura, cuidado na prática, imagens editoriais e convite para nutrição + treinamento.
+- `dist/universo/index.html`: universo da marca, manifesto, galeria e paleta interativa.
+- `dist/contato/index.html`: canais oficiais e seleção de interesse/formato. Aceita `?interesse=nutricao|treinamento|integrado` e `?formato=presencial|online`.
+- `dist/style.css`: tokens da marca, componentes e regras responsivas compartilhados.
+- `dist/site.js`: menu, cabeçalho, revelações na rolagem, assinatura interativa, pilares, manifesto, trilho de etapas, paleta, galerias, escolhas de contato, fundo vivo e o botão "Pausar animações".
+- `dist/film.js`: controle do filme pela rolagem e reprodução manual.
+- `dist/assets/`: logotipo, imagens e vídeo. Os arquivos estão incluídos no repositório.
 
 `dist` é o código-fonte efetivo deste projeto, apesar do nome. O repositório inclui os assets originais exportados da versão publicada, inclusive `muni-scroll-film.mp4`.
 

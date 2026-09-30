@@ -274,6 +274,64 @@ img,video,svg{max-width:100%;display:block}
 .place-wide{aspect-ratio:3/3.6}
 .place-wide img{object-position:45% 35%}
 
+/* Fala do profissional + narrativa (treinamento e nutrição) */
+.voice{background:var(--paper);padding-bottom:clamp(40px,5vw,70px)}
+.voice-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(36px,7vw,120px);align-items:center}
+.voice-quote{margin:0;position:relative;padding-top:clamp(40px,5vw,70px)}
+.voice-quote:before{content:'“';position:absolute;top:-.12em;left:-.04em;font-family:var(--serif);font-size:clamp(140px,16vw,240px);line-height:1;color:var(--lime);z-index:0}
+.voice-quote blockquote{position:relative;margin:0;font-family:var(--serif);font-size:clamp(32px,3.6vw,58px);line-height:1.08;letter-spacing:-.01em}
+.voice-quote blockquote em{color:var(--green-deep)}
+.voice-quote figcaption{display:flex;align-items:center;gap:12px;margin-top:26px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+.voice-mark{width:34px;height:1px;background:var(--green-deep)}
+.voice-focus{padding:clamp(28px,3.4vw,48px);background:var(--lime)}
+.voice-focus h2{font-size:clamp(32px,3vw,48px);margin-bottom:22px}
+.voice-focus h2 em{color:var(--green-deep)}
+.voice-focus .truth-terms div{border-top-color:#41443c26}
+
+/* O que você recebe */
+.receive{background:var(--paper);padding-top:clamp(40px,5vw,70px)}
+.receive-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(30px,6vw,100px);padding:clamp(34px,4.4vw,64px);background:#4d4e4a;color:var(--paper)}
+.receive .eyebrow{color:var(--green)}
+.receive h2{font-size:clamp(38px,4vw,64px);margin:18px 0 18px}
+.receive h2 em{color:var(--lime)}
+.receive-note{color:var(--gray);font-size:15px;max-width:24em}
+.receive-list{display:grid;gap:0;align-content:start}
+.receive-list li{display:grid;grid-template-columns:22px 1fr;gap:16px;align-items:start;padding:14px 0;border-top:1px solid #fafbf524;font-size:16px;line-height:1.45}
+.receive-list li:last-child{border-bottom:1px solid #fafbf524}
+.rcv-check{width:18px;height:18px;margin-top:2px;border-radius:50%;background:var(--lime);position:relative}
+.rcv-check:after{content:'';position:absolute;left:6px;top:3px;width:4px;height:8px;border:solid var(--ink);border-width:0 1.6px 1.6px 0;transform:rotate(45deg)}
+
+/* Convite para nutrição + treino */
+.cross{background:var(--paper);padding-top:0}
+.cross-grid{display:grid;grid-template-columns:minmax(0,.55fr) minmax(0,1fr);gap:clamp(28px,5vw,80px);align-items:center;border-top:1px solid var(--line);padding-top:clamp(48px,6vw,90px)}
+.cross-photo{margin:0;aspect-ratio:4/4.4;overflow:hidden;border-radius:999px 999px 0 0;background:var(--gray)}
+.cross-photo img{width:100%;height:100%;object-fit:cover}
+.cross h2{font-size:clamp(40px,4.6vw,76px);margin:18px 0 18px}
+.cross h2 em{color:var(--green-deep);display:block}
+.cross p{color:var(--graphite);max-width:32em;margin-bottom:26px}
+
+/* Nutrição + treino: duas trilhas que se encontram */
+.why-head{max-width:880px;margin-bottom:clamp(40px,5vw,70px)}
+.why-head h2{font-size:clamp(46px,5.6vw,92px);margin:20px 0 22px}
+.why-head h2 em{color:var(--green-deep);display:block}
+.lanes{display:grid;grid-template-columns:minmax(0,1fr) 80px minmax(0,1fr);grid-template-areas:"a c b" "m m m"}
+.lane:first-child{grid-area:a}.lanes-center{grid-area:c}.lane.is-train{grid-area:b}.lanes-meet{grid-area:m}
+.lane-label{display:flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding-bottom:16px;border-bottom:1px solid var(--ink)}
+.lane-label i{width:9px;height:9px;border-radius:50%;background:var(--green)}
+.lane.is-train .lane-label i{background:var(--taupe)}
+.lane ol{display:grid}
+.lane li{padding:20px 0;border-bottom:1px solid var(--line)}
+.lane li b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.2vw,32px);line-height:1.1;margin-bottom:6px}
+.lane li span{font-size:15px;color:var(--graphite)}
+.lanes-center{position:relative}
+.lanes-center span{position:absolute;left:50%;top:0;bottom:-60px;width:1px;background:linear-gradient(180deg,transparent,var(--green-deep) 30%,var(--green-deep))}
+.lanes-meet{display:flex;flex-direction:column;align-items:center;text-align:center;padding-top:60px}
+.lanes-dot{width:18px;height:18px;border-radius:50%;background:var(--lime);border:2px solid var(--green-deep);box-shadow:0 0 0 10px #f1ffbb66;margin-bottom:22px}
+.lanes-meet p{font-family:var(--serif);font-size:clamp(26px,2.6vw,40px);line-height:1.15;max-width:18em}
+.lanes-meet em{color:var(--green-deep)}
+.direction .direction-points{margin-top:0}
+.faq-wrap .faq{margin-top:0}
+
 /* Contato: onde estamos */
 .visit{margin-bottom:28px;padding:24px 0;border-top:1px solid #41443c33;border-bottom:1px solid #41443c33;max-width:460px}
 .visit .eyebrow{color:var(--green-deep)}
@@ -636,6 +694,11 @@ img,video,svg{max-width:100%;display:block}
   .closing .actions .button{flex:1 1 100%;max-width:340px}
   .place-grid{grid-template-columns:1fr}
   .place-photos{order:-1}
+  .voice-grid,.receive-grid,.cross-grid{grid-template-columns:1fr}
+  .cross-photo{aspect-ratio:16/11}
+  .lanes{grid-template-columns:1fr;grid-template-areas:"a" "b" "m";gap:34px}
+  .lanes-center{display:none}
+  .lanes-meet{padding-top:10px}
   .footer-top{grid-template-columns:1fr;gap:32px}
   .footer-bottom{flex-wrap:wrap}
 }

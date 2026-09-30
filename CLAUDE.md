@@ -31,6 +31,8 @@ Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação
 
 As URLs absolutas (canonical, `og:url`, `og:image`, `sitemap.xml`, `robots.txt`, dados estruturados) usam `https://espacomuni.vercel.app`. Se o domínio oficial mudar, troque esse endereço em todos esses lugares. A imagem de compartilhamento é `assets/og-muni.jpg` (1200×630); os ícones são `favicon-32.png`, `icon-512.png` e `apple-touch-icon.png`.
 
+A página `/juntos/` é "Nutrição + treino" (duas trilhas, Bia e Bruno, que se encontram; situações práticas e FAQ). As páginas de nutrição e treinamento têm a fala do profissional com a narrativa (`.voice`), capítulos com foto, "O que você recebe" (`.receive`) e um convite para `/juntos/` (`.cross`).
+
 A página `/universo/` é a "Sobre a MUNI" (o endereço foi mantido para não quebrar links).
 
 ## Contato e WhatsApp

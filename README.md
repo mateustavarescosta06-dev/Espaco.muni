@@ -18,6 +18,7 @@ Abra `http://localhost:8000`. Sirva sempre a pasta `dist` como raiz, pois as rot
 
 - `dist/index.html`: início. Abertura com o filme de fundo ao longo de três telas e caixas editoriais (Mover, Nutrir, Integrar), capas do universo MUNI, "Como funciona", manifesto sobre o padrão da marca, formatos (Jundiaí e online), galeria sobre cores em movimento e lista de caminhos.
 - `dist/nutricao/index.html` e `dist/treinamento/index.html`: abertura, cuidado na prática, imagens editoriais e convite para nutrição + treinamento.
+- `dist/juntos/index.html`: nutrição + treino, com as duas trilhas, situações práticas e perguntas frequentes.
 - `dist/universo/index.html`: universo da marca, manifesto, galeria interativa e galeria horizontal.
 - `dist/contato/index.html`: canais oficiais e seleção de interesse/formato. Aceita `?interesse=nutricao|treinamento|integrado` e `?formato=presencial|online`.
 - `dist/style.css`: tokens da marca, componentes e regras responsivas compartilhados.

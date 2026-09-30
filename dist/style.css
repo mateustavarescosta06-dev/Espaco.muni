@@ -454,3 +454,4 @@ img,video,svg{max-width:100%;display:block}
   .footer-bottom{flex-wrap:wrap}
 }
 .rail-more{margin-top:30px}
+.format-card.is-offset .format-media img{object-position:50% 100%}

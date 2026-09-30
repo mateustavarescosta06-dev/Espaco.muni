@@ -11,7 +11,7 @@ Arquivos:
 - `higgsfield-objects.webp`
 - `marca-muni.png`
 - `movimento-muni.jpg`
-- `muni-digital.jpg`
+- `muni-digital.jpg` (substituída em 30/09/2026 por versão em alta, 1122×1402)
 - `muni-film-poster.jpg`
 - `muni-scroll-film.mp4`
 - `nutricao-editorial.jpg`
@@ -21,7 +21,7 @@ Arquivos:
 - `portal-conectar.jpg`
 - `portal-mover.jpg`
 - `portal-nutrir.jpg`
-- `ritual-muni.jpg`
+- `ritual-muni.jpg` (substituída em 30/09/2026 por versão em alta, 1122×1402)
 
 A cópia atual foi recuperada diretamente da versão publicada em `https://espaco-muni.mateus-tavarescosta0.chatgpt.site` e commitada pelo workflow `Sync MUNI assets`.
 
@@ -37,4 +37,4 @@ O workflow `.github/workflows/sync-muni-assets.yml` também pode ser executado m
 
 A cópia do `muni-scroll-film.mp4` recuperada da publicação estava truncada (3 MB exatos, sem o índice `moov`) e não tocava. Em 30/09/2026 o arquivo foi substituído a partir do vídeo original de 12 segundos, recomprimido para web (H.264, 720×1280, sem áudio, `faststart`, cerca de 3,4 MB). O `muni-film-poster.jpg` foi regenerado a partir do quadro de 1s, onde a abertura começa.
 
-Atenção: rodar `scripts/download-assets.sh` ou o workflow de sincronização baixa de novo o vídeo publicado e pode trazer de volta a cópia truncada.
+Atenção: rodar `scripts/download-assets.sh` também substitui `muni-digital.jpg` e `ritual-muni.jpg` pelas versões antigas, de menor resolução. Além disso, ou o workflow de sincronização baixa de novo o vídeo publicado e pode trazer de volta a cópia truncada.

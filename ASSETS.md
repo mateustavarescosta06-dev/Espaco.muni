@@ -8,6 +8,8 @@ Arquivos:
 - `equipe-muni.jpg` (Bia e Bruno em frente à parede da MUNI, 1122×1402)
 - `equipe-muni-marca.jpg` (Bia e Bruno apontando para a marca na parede; arco alto do presencial)
 - `espaco-sala.jpg` (sala com janela em arco; arco pequeno do presencial)
+- `nutricao-prato.jpg`, `nutricao-tigela.jpg` (fotos editoriais da página de nutrição)
+- `treino-toalha.jpg`, `integrado-pera.jpg` (arcos de "Nutrição e treino, na mesma direção")
 - `espaco-mesa.jpg` (mesa com notebook verde e parede verde; arco pequeno do online)
 - `encontro-muni-recorte.jpg` (recorte da foto do grupo; não é mais usado no site)
 - `higgsfield-movement.webp`

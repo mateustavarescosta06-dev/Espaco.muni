@@ -35,6 +35,8 @@ Os arquivos visuais originais estão em `dist/assets/`, inclusive o vídeo `muni
 
 Não invente nomes de profissionais, registros, preços, resultados, depoimentos ou serviços. Fatos confirmados pela MUNI (posts oficiais e o próprio cliente): Bia cuida da nutrição e Bruno do treino (use só os primeiros nomes); treino personalizado no app, com acompanhamento e ajustes; avaliação física completa (adipometria, circunferências, bioimpedância, avaliação postural) só no presencial. Endereço: Rua do Retiro, 424, Sala 114, Vila Virgínia, Jundiaí – SP. Atendimento seg a sex 8h–20h e sáb 8h–14h; agendamento e confirmação de consultas seg a sex 8h–18h.
 
+Página de nutrição: vários textos (consulta, educação alimentar, acompanhamento entre consultas, "Nutrição e treino, na mesma direção", situações e FAQ) vieram de sugestões ainda não validadas pela equipe. Mantenha-os sem prometer frequência de retornos, canais ou formatos de consulta; quando a equipe confirmar, atualize com os dados reais.
+
 Narrativa central: emagrecer com saúde não é só comer menos nem treinar mais. Na nutrição, déficit calórico com saciedade e adesão (o melhor plano é o que você consegue seguir sem ser um fardo). No treino, não é só queimar caloria: preservar massa muscular e perder peso com qualidade. Escolhas que você consegue manter. As imagens editoriais e o filme gerados são peças de campanha, não registros documentais de pacientes ou do espaço físico. Os contatos atuais vêm do Instagram `@espaco.muni` e de `https://linktr.ee/espaco.muni`.
 
 O GitHub não publica automaticamente no endereço atual do ChatGPT Sites. Preserve `.openai/hosting.json` e explique essa separação se a tarefa envolver publicação. Nunca inclua tokens, arquivos `.env` reais ou credenciais no repositório.

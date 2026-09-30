@@ -215,6 +215,19 @@
     });
   });
 
+  /* Abas genéricas (situações da nutrição + treino) */
+  document.querySelectorAll('[data-tabs]').forEach(box=>{
+    const tabs=[...box.querySelectorAll('[role=tab]')];
+    const select=tab=>tabs.forEach(t=>{const on=t===tab;t.setAttribute('aria-selected',String(on));t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});
+    tabs.forEach((tab,i)=>{
+      tab.addEventListener('click',()=>select(tab));
+      tab.addEventListener('keydown',event=>{
+        if(event.key!=='ArrowRight'&&event.key!=='ArrowLeft')return;
+        event.preventDefault();const next=tabs[(i+(event.key==='ArrowRight'?1:-1)+tabs.length)%tabs.length];select(next);next.focus();
+      });
+    });
+  });
+
   /* Formatos: seletor presencial/online */
   document.querySelectorAll('[data-format-switch]').forEach(box=>{
     const tabs=[...box.querySelectorAll('[role=tab]')];

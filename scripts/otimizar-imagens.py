@@ -11,7 +11,8 @@ from PIL import Image
 
 DIST = Path(__file__).resolve().parent.parent / 'dist'
 ASSETS = DIST / 'assets'
-SKIP = {'marca-muni.png', 'muni-film-poster.jpg', 'pattern-unit.png'}
+SKIP = {'marca-muni.png', 'muni-film-poster.jpg', 'pattern-unit.png', 'og-muni.jpg',
+        'apple-touch-icon.png', 'favicon-32.png', 'icon-512.png'}
 SIZES = (1200, 640)
 SRC = re.compile(r'^(?!.*-(?:1200|640)\.webp$).+\.(?:jpe?g|png|webp)$', re.I)
 

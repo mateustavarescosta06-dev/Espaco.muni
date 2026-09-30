@@ -262,6 +262,18 @@ img,video,svg{max-width:100%;display:block}
 .scenario-media{margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:999px 999px 0 0;background:var(--gray)}
 .scenario-media img{width:100%;height:100%;object-fit:cover}
 
+/* Sobre: o espaço */
+.place-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(36px,6vw,100px);align-items:center}
+.place-copy h2{font-size:clamp(44px,5vw,84px);margin:20px 0 22px}
+.place-copy h2 em{color:var(--green-deep);display:block}
+.place-copy .lead{margin-bottom:30px}
+.place-photos{display:grid;grid-template-columns:.8fr 1fr;gap:clamp(12px,1.6vw,22px);align-items:end}
+.place-photos figure{margin:0;position:relative;overflow:hidden;background:var(--gray);box-shadow:0 30px 60px #1c1b1714}
+.place-photos img{width:100%;height:100%;object-fit:cover}
+.place-tall{aspect-ratio:3/4.6;border-radius:999px 999px 0 0}
+.place-wide{aspect-ratio:3/3.6}
+.place-wide img{object-position:45% 35%}
+
 /* Contato: onde estamos */
 .visit{margin-bottom:28px;padding:24px 0;border-top:1px solid #41443c33;border-bottom:1px solid #41443c33;max-width:460px}
 .visit .eyebrow{color:var(--green-deep)}
@@ -622,6 +634,8 @@ img,video,svg{max-width:100%;display:block}
   .scenario-media{aspect-ratio:16/10;border-radius:999px 999px 0 0}
   .ribbon-item{width:150px}
   .closing .actions .button{flex:1 1 100%;max-width:340px}
+  .place-grid{grid-template-columns:1fr}
+  .place-photos{order:-1}
   .footer-top{grid-template-columns:1fr;gap:32px}
   .footer-bottom{flex-wrap:wrap}
 }

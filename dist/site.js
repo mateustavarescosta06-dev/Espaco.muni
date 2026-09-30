@@ -66,40 +66,6 @@
     reveals.forEach(el=>io.observe(el));
   }else reveals.forEach(el=>el.classList.add('is-in'));
 
-  /* Abertura: a assinatura MUNI responde ao ponteiro. */
-  const hero=document.querySelector('[data-hero]');
-  if(hero){
-    const letters=[...hero.querySelectorAll('[data-depth]')];
-    const reset=()=>{letters.forEach(l=>l.style.transform='');hero.style.removeProperty('--mx');hero.style.removeProperty('--my');};
-    hero.addEventListener('pointermove',event=>{
-      if(!motion.on||event.pointerType!=='mouse')return;
-      const rect=hero.getBoundingClientRect();
-      const x=(event.clientX-rect.left)/rect.width,y=(event.clientY-rect.top)/rect.height;
-      hero.style.setProperty('--mx',`${x*100}%`);hero.style.setProperty('--my',`${y*100}%`);
-      letters.forEach(l=>{const d=Number(l.dataset.depth);l.style.transform=`translate(${(x-.5)*d}px,${(y-.5)*d}px)`;});
-    },{passive:true});
-    hero.addEventListener('pointerleave',reset,{passive:true});
-    motion.listeners.push(on=>{if(!on)reset();});
-  }
-
-  /* Pilares: Nutrir, Mover, Integrar */
-  document.querySelectorAll('[data-pillars]').forEach(list=>{
-    const items=[...list.querySelectorAll('.pillar')];
-    const hover=matchMedia('(hover: hover) and (min-width: 761px)');
-    function activate(item){
-      items.forEach(p=>{
-        const active=p===item;
-        p.classList.toggle('is-active',active);
-        p.querySelector('.pillar-tab').setAttribute('aria-expanded',String(active));
-      });
-    }
-    items.forEach(item=>{
-      item.querySelector('.pillar-tab').addEventListener('click',()=>activate(item));
-      item.addEventListener('mouseenter',()=>{if(hover.matches)activate(item);});
-      item.addEventListener('click',event=>{if(!item.classList.contains('is-active')&&!event.target.closest('a'))activate(item);});
-    });
-  });
-
   /* Manifesto: as palavras acendem com a rolagem. */
   const statements=[...document.querySelectorAll('[data-words]')].map(el=>{
     const words=[];

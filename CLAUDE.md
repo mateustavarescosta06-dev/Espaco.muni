@@ -10,15 +10,15 @@ Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o cód
 - Paleta e tipografia já definidas nas variáveis de `dist/style.css`.
 - Priorize frases curtas, fotografia editorial, textura e espaços de respiro.
 - Use o logotipo real de `dist/assets/marca-muni.png`. Não substitua a marca por um ícone genérico.
-- Abertura: texto com a proposta de valor de um lado e, do outro, o painel grafite inspirado na sacola MUNI (assinatura MU/NI desenhada em traço, M e I em verde, U e N em cinza, faixa de padrão na base). No celular, o painel fica acima de título e botões. Preserve essa separação.
-- A assinatura animada da abertura é um SVG em traço que reproduz o logotipo; o arquivo real da marca continua em cabeçalho, rodapé e favicon.
-- O filme tem um espaço próprio. Desktop: coluna de texto e o vídeo vertical inteiro como cartão. Mobile: vídeo em tela cheia com texto curto sobre faixa com contraste. Não sobreponha vários blocos de texto ou logos sobre o assunto principal.
+- Estética: wellness premium + editorial de moda + movimento + comida. Títulos em Cormorant Garamond com itálico de destaque; textos e rótulos em DM Sans; botões retos em caixa alta com espaçamento; cantos retos; tom pedra (#858077) nos botões principais.
+- Abertura da home: o filme fica fixo ao fundo ao longo de três telas de rolagem e avança com ela. As informações entram em caixas claras que rolam por cima (Mover, Nutrir, Integrar), alternando lados no desktop para não cobrir o assunto. No desktop, o enquadramento acompanha o assunto do vídeo vertical (panorâmica em `film.js`); no celular, o vídeo ocupa a tela inteira.
+- Não sobreponha vários blocos de texto ou logos sobre o assunto principal do filme.
 
 ## Interações
 
-`site.js` controla menu, cabeçalho, revelações na rolagem, assinatura interativa, pilares, manifesto, trilho de etapas, paleta, galerias, escolhas de contato, fundo com marca repetida e o botão "Pausar animações" (preferência guardada no navegador). `film.js` controla o filme de 12 segundos com a rolagem normal do documento. Preserve avanço e retorno, reprodução manual, pular filme, poster, carregamento próximo da seção e suporte a `prefers-reduced-motion`.
+`site.js` controla menu, cabeçalho, revelações na rolagem, manifesto, trilho de etapas, paleta, galerias, escolhas de contato, fundo com marca repetida e o botão "Pausar animações" (preferência guardada no navegador). `film.js` controla o filme de 12 segundos com a rolagem normal do documento: mapa rolagem→tempo por capítulo (`stops`), enquadramento por tempo (`framing`) e leve inércia. Preserve avanço e retorno, reprodução manual, pular filme, poster e suporte a `prefers-reduced-motion`.
 
-Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação por teclado, foco visível, textos alternativos e `playsinline`/`muted` do vídeo. Evite aumentar muito o arquivo de vídeo; a versão atual tem aproximadamente 2,4 MB (H.264, 720×1280, keyframe a cada 8 quadros para a rolagem responder bem).
+Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação por teclado, foco visível, textos alternativos e `playsinline`/`muted` do vídeo. Evite aumentar muito o arquivo de vídeo; a versão atual tem aproximadamente 3,3 MB (H.264, 720×1280, keyframe a cada 8 quadros para a rolagem responder bem).
 
 ## Assets
 

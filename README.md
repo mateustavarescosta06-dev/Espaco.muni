@@ -16,13 +16,13 @@ Abra `http://localhost:8000`. Sirva sempre a pasta `dist` como raiz, pois as rot
 
 ## Estrutura
 
-- `dist/index.html`: início. Abertura com a assinatura MUNI animada, proposta de valor, pilares (Nutrir / Mover / Integrar), filme controlado pela rolagem, "Como funciona", manifesto, formatos (Jundiaí e online), paleta e galeria, escolha de caminho.
+- `dist/index.html`: início. Abertura com o filme de fundo ao longo de três telas e caixas editoriais (Mover, Nutrir, Integrar), capas do universo MUNI, "Como funciona", manifesto, formatos (Jundiaí e online), paleta e galeria, escolha de caminho.
 - `dist/nutricao/index.html` e `dist/treinamento/index.html`: abertura, cuidado na prática, imagens editoriais e convite para nutrição + treinamento.
 - `dist/universo/index.html`: universo da marca, manifesto, galeria e paleta interativa.
 - `dist/contato/index.html`: canais oficiais e seleção de interesse/formato. Aceita `?interesse=nutricao|treinamento|integrado` e `?formato=presencial|online`.
 - `dist/style.css`: tokens da marca, componentes e regras responsivas compartilhados.
-- `dist/site.js`: menu, cabeçalho, revelações na rolagem, assinatura interativa, pilares, manifesto, trilho de etapas, paleta, galerias, escolhas de contato, fundo vivo e o botão "Pausar animações".
-- `dist/film.js`: controle do filme pela rolagem e reprodução manual.
+- `dist/site.js`: menu, cabeçalho, revelações na rolagem, manifesto, trilho de etapas, paleta, galerias, escolhas de contato, fundo vivo e o botão "Pausar animações".
+- `dist/film.js`: filme de fundo da abertura: rolagem→tempo, enquadramento que acompanha o assunto, capítulos e reprodução manual.
 - `dist/assets/`: logotipo, imagens e vídeo. Os arquivos estão incluídos no repositório.
 
 `dist` é o código-fonte efetivo deste projeto, apesar do nome. O repositório inclui os assets originais exportados da versão publicada, inclusive `muni-scroll-film.mp4`.

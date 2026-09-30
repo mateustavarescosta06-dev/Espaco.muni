@@ -26,80 +26,82 @@
   <nav id="menu" aria-label="Menu principal"><a href="/nutricao/">Nutrição</a><a href="/treinamento/">Treinamento</a><a href="/universo/">Universo MUNI</a><a class="nav-cta" href="/contato/">Vem pra MUNI</a></nav>
 </header>
 <main id="conteudo">
-<section class="hero" aria-label="Apresentação">
-  <div class="hero-copy">
-    <span class="eyebrow dot">Espaço integrado de saúde · Jundiaí &amp; online</span>
-    <h1>Nutrição e treino <em>no mesmo movimento.</em></h1>
-    <p class="lead">Na MUNI, o que você come e como você se move são pensados juntos, a partir da sua rotina, dos seus objetivos e do seu momento.</p>
-    <div class="hero-actions">
-      <a class="button solid" href="/contato/">Começar por uma conversa</a>
-      <a class="button ghost" href="#como-funciona">Como funciona</a>
+<section class="journey" id="muni-em-movimento" data-film aria-label="MUNI em movimento: movimento, alimento e cuidado">
+  <div class="journey-stage">
+    <video class="journey-video" muted playsinline preload="metadata" poster="/assets/muni-film-poster.jpg" aria-label="Uma mulher corre, leva uma tigela com frutas e a coloca à mesa. O filme acompanha a rolagem."><source data-src="/assets/muni-scroll-film.mp4" type="video/mp4"></video>
+    <div class="journey-shade" aria-hidden="true"></div>
+    <div class="journey-grain" aria-hidden="true"></div>
+    <div class="journey-rail" aria-hidden="true">
+      <span data-chapter class="active">01 <em>Movimento</em></span>
+      <span class="journey-progress"><span></span></span>
+      <span data-chapter>02 <em>Alimento</em></span>
+      <span data-chapter>03 <em>Cuidado</em></span>
     </div>
-    <ul class="hero-facts">
-      <li><b>Nutrição</b>pensada para o seu momento</li>
-      <li><b>Treinamento</b>que cabe na sua rotina</li>
-      <li><b>Jundiaí ou online</b>onde você estiver</li>
-    </ul>
+    <div class="journey-controls">
+      <button type="button" class="film-play" aria-label="Reproduzir o filme sem rolar">Reproduzir</button>
+      <button type="button" class="film-scroll" hidden>Usar rolagem</button>
+      <a class="film-skip" href="#depois-do-filme">Pular filme ↓</a>
+    </div>
   </div>
-  <div class="hero-visual" data-hero>
-    <div class="hero-tag" aria-hidden="true"><span>NUTRIR</span><span>MOVER</span><span>CUIDAR</span></div>
-    <svg class="wordmark" viewBox="0 0 220 232" role="img" aria-labelledby="wm-title">
-      <title id="wm-title">MUNI — Espaço integrado de saúde</title>
-      <text class="wordmark-sub" transform="translate(16 220) rotate(-90)" textLength="204">ESPAÇO INTEGRADO DE SAÚDE</text>
-      <g class="wm-letter wm-lime" data-depth="14"><path pathLength="1" d="M36 104V16l35 58 35-58v88"/></g>
-      <g class="wm-letter wm-gray" data-depth="-10"><path pathLength="1" d="M134 16v56a33 33 0 0 0 66 0V16"/></g>
-      <g class="wm-letter wm-gray" data-depth="-16"><path pathLength="1" d="M36 220v-88l70 88v-88"/></g>
-      <g class="wm-letter wm-lime" data-depth="10"><path pathLength="1" d="M167 132v88"/></g>
-    </svg>
-    <p class="hero-words" aria-hidden="true"><span>Seu corpo.</span><span>Sua vida.</span><span>Sua MUNI.</span></p>
-    <div class="wave-band" aria-hidden="true"></div>
-    <div class="wave-band reverse" aria-hidden="true"></div>
+  <div class="journey-content">
+    <div class="journey-block journey-intro">
+      <div class="journey-hero">
+        <span class="eyebrow">Espaço integrado de saúde · Jundiaí &amp; online</span>
+        <h1>Nutrição e treino, <em>no mesmo movimento.</em></h1>
+        <p>Na MUNI, o que você come e como você se move são pensados juntos, a partir da sua rotina, dos seus objetivos e do seu momento.</p>
+        <div class="journey-actions">
+          <a class="button paper" href="/contato/">Começar por uma conversa</a>
+          <a class="button on-dark" href="#como-funciona">Como funciona</a>
+        </div>
+      </div>
+      <span class="journey-cue" aria-hidden="true">Role para entrar no movimento</span>
+    </div>
+    <div class="journey-block is-right">
+      <article class="journey-card" data-reveal>
+        <span class="journey-kicker">01 — Mover</span>
+        <h2>Seu corpo. <em>Seu ritmo.</em></h2>
+        <p>Consultoria de treinos pensada para caber na sua rotina. Movimento como parte da vida, não como obrigação.</p>
+        <a class="link-arrow" href="/treinamento/">Conhecer o treinamento <span aria-hidden="true">›</span></a>
+      </article>
+    </div>
+    <div class="journey-block is-left">
+      <article class="journey-card" data-reveal>
+        <span class="journey-kicker">02 — Nutrir</span>
+        <h2>Mais sabor. <em>Mais você.</em></h2>
+        <p>Nutrição pensada para o seu momento, com espaço para o que você gosta de comer e para as suas escolhas.</p>
+        <a class="link-arrow" href="/nutricao/">Conhecer a nutrição <span aria-hidden="true">›</span></a>
+      </article>
+    </div>
+    <div class="journey-block is-right">
+      <article class="journey-card" data-reveal>
+        <span class="journey-kicker">03 — Integrar</span>
+        <h2>Nutrição encontra treino. <em>Você encontra seu ritmo.</em></h2>
+        <p>Um só cuidado, pensado em conjunto, na vida real. Presencial em Jundiaí ou online.</p>
+        <a class="button solid" href="/contato/?interesse=integrado">Quero os dois</a>
+      </article>
+    </div>
   </div>
 </section>
 
-<section class="section pillars" id="proposta">
+<section class="section editorial" id="depois-do-filme">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <span class="eyebrow">A proposta MUNI</span>
-      <h2>Um cuidado <em>que conversa entre si.</em></h2>
-      <p>Nutrição e treinamento costumam caminhar separados. Na MUNI, eles se encontram, e você não precisa fazer essa ponte sozinho.</p>
+    <div class="section-head centered" data-reveal>
+      <span class="eyebrow">O universo MUNI</span>
+      <h2>Mover. Nutrir. <em>Cuidar.</em></h2>
     </div>
-    <div class="pillar-list" data-pillars data-reveal="2">
-      <article class="pillar is-active">
-        <img src="/assets/higgsfield-nutrition.webp" alt="Tigela com iogurte, kiwi e uvas verdes" loading="lazy">
-        <div class="pillar-body">
-          <button type="button" class="pillar-tab" aria-expanded="true" aria-controls="pilar-nutrir"><small>01</small><span>Nutrir</span><i aria-hidden="true">+</i></button>
-          <div class="pillar-detail" id="pilar-nutrir"><p>Nutrição pensada para o seu momento. Sabor, rotina e escolhas reais no mesmo prato.</p><a class="link-arrow" href="/nutricao/">Conhecer a nutrição <span aria-hidden="true">→</span></a></div>
-        </div>
-      </article>
-      <article class="pillar">
-        <img src="/assets/higgsfield-movement.webp" alt="Roupa esportiva e toalha verde com a marca MUNI" loading="lazy">
-        <div class="pillar-body">
-          <button type="button" class="pillar-tab" aria-expanded="false" aria-controls="pilar-mover"><small>02</small><span>Mover</span><i aria-hidden="true">+</i></button>
-          <div class="pillar-detail" id="pilar-mover"><p>Consultoria de treinos. Movimento que encontra espaço na sua vida, no seu ritmo.</p><a class="link-arrow" href="/treinamento/">Conhecer o treinamento <span aria-hidden="true">→</span></a></div>
-        </div>
-      </article>
-      <article class="pillar">
-        <img src="/assets/higgsfield-objects.webp" alt="Caneca, bolsa, toalha e caderno com a identidade MUNI" loading="lazy">
-        <div class="pillar-body">
-          <button type="button" class="pillar-tab" aria-expanded="false" aria-controls="pilar-integrar"><small>03</small><span>Integrar</span><i aria-hidden="true">+</i></button>
-          <div class="pillar-detail" id="pilar-integrar"><p>Nutrição + treinamento pensados juntos. O match que faz o cuidado ter mais sentido.</p><a class="link-arrow" href="/contato/?interesse=integrado">Quero os dois <span aria-hidden="true">→</span></a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="scroll-film" id="muni-em-movimento" aria-label="Filme MUNI: movimento, alimento e cuidado">
-  <div class="film-stage">
-    <div class="film-media"><video id="muni-film" muted playsinline preload="metadata" poster="/assets/muni-film-poster.jpg" aria-label="Uma mulher corre, leva uma tigela com frutas e a coloca à mesa. O filme acompanha a rolagem."><source data-src="/assets/muni-scroll-film.mp4" type="video/mp4"></video></div>
-    <div class="film-top"><span class="eyebrow">MUNI em movimento</span><a href="#como-funciona" class="film-skip">Pular filme ↓</a></div>
-    <div class="film-story"><span class="film-counter">01 / 03</span><h2 id="film-title">Encontre<br>seu <em>ritmo.</em></h2><p id="film-caption">O cuidado começa em você.</p></div>
-    <div class="film-bottom">
-      <p class="film-hint">Role para dar movimento ↓</p>
-      <div class="film-actions"><button type="button" class="film-play" aria-label="Reproduzir o filme sem rolar">Reproduzir ↗</button><button type="button" class="film-scroll" hidden>Usar rolagem ↓</button></div>
-      <div class="film-progress" aria-hidden="true"><span></span></div>
-      <div class="film-chapters" aria-hidden="true"><span class="active">01 MOVIMENTO</span><span>02 ALIMENTO</span><span>03 CUIDADO</span></div>
+    <div class="editorial-grid">
+      <a class="editorial-card" href="/treinamento/" data-reveal>
+        <figure><img src="/assets/higgsfield-movement.webp" alt="Roupa esportiva e toalha verde com a marca MUNI" loading="lazy"><figcaption><small>O seu</small><em>Ritmo</em><small>Treinamento</small></figcaption></figure>
+        <span class="link-arrow">Explorar treinos <span aria-hidden="true">›</span></span>
+      </a>
+      <a class="editorial-card" href="/nutricao/" data-reveal="2">
+        <figure><img src="/assets/higgsfield-nutrition.webp" alt="Tigela com iogurte, kiwi e uvas verdes" loading="lazy"><figcaption><small>Mais</small><em>Sabor</em><small>Nutrição</small></figcaption></figure>
+        <span class="link-arrow">Explorar nutrição <span aria-hidden="true">›</span></span>
+      </a>
+      <a class="editorial-card" href="/universo/" data-reveal="3">
+        <figure><img src="/assets/higgsfield-objects.webp" alt="Caneca, bolsa, toalha e caderno com a identidade MUNI" loading="lazy"><figcaption><small>Um jeito</small><em>MUNI</em><small>de cuidar</small></figcaption></figure>
+        <span class="link-arrow">Entrar no universo <span aria-hidden="true">›</span></span>
+      </a>
     </div>
   </div>
 </section>

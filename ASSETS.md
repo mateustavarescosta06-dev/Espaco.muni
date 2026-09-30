@@ -10,6 +10,7 @@ Arquivos:
 - `espaco-sala.jpg` (sala com janela em arco; arco pequeno do presencial)
 - `nutricao-prato.jpg`, `nutricao-tigela.jpg` (fotos editoriais da página de nutrição)
 - `treino-toalha.jpg`, `integrado-pera.jpg` (arcos de "Nutrição e treino, na mesma direção")
+- `frutas.jpg`, `refeicao.jpg`, `preparo-alimentos.jpg`, `alimentacao-movimento.jpg`, `treino-tenis.jpg`, `treino-alongamento.jpg` (ensaio editorial; faixa da home, páginas de nutrição e treinamento)
 - `espaco-mesa.jpg` (mesa com notebook verde e parede verde; arco pequeno do online)
 - `encontro-muni-recorte.jpg` (recorte da foto do grupo; não é mais usado no site)
 - `higgsfield-movement.webp`

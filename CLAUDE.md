@@ -31,7 +31,7 @@ Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação
 
 As URLs absolutas (canonical, `og:url`, `og:image`, `sitemap.xml`, `robots.txt`, dados estruturados) usam `https://espacomuni.vercel.app`. Se o domínio oficial mudar, troque esse endereço em todos esses lugares. A imagem de compartilhamento é `assets/og-muni.jpg` (1200×630); os ícones são `favicon-32.png`, `icon-512.png` e `apple-touch-icon.png`.
 
-Linguagem de papel (vinda dos posts da MUNI): papel de caderno rasgado (`.paper-lined.paper-torn`), post-it com clipe (`.paper-sticky` + `.clip`), fita (`.tape`) e marca-texto lima (`<mark>`). Use nas páginas de serviço para as falas e os convites; não transforme tudo em papel.
+Linguagem de papel (vinda dos posts da MUNI): papel de caderno rasgado (`.paper-lined.paper-torn`), post-it com clipe (`.paper-sticky` + `.clip`), fita (`.tape`) e marca-texto lima (`<mark>`). Use nas falas, nos convites e em poucos blocos-chave; não transforme tudo em papel. Na home: cards do filme em papel, colunas de "Emagrecer não é só…" como post-it e folha de caderno, faixa de fotos como polaroids com fita, endereço num bilhete e convite final em post-it. A inclinação usa a propriedade `rotate` (classes `.tilt-soft-*`) para não brigar com a animação de entrada, que usa `transform`.
 
 - Treinamento: abertura em tela cheia (`.bleed`), frase do Bruno em papel rasgado, fita métrica que corre com a rolagem na avaliação física (`.measure`), foto grande com a narrativa (`.feature`) e calendário de seis semanas com o ritmo de feedback, dias 7, 22 e 37 (`.cal`).
 - Nutrição: prato em tela cheia, post-it da Bia, ficha de "Primeira consulta" (`.chart-sheet`), polaroids arrastáveis (`.snaps`) e convite em papel.

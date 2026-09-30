@@ -14,11 +14,12 @@ Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o cód
 - Abertura da home: o filme fica fixo ao fundo ao longo de três telas de rolagem, tocando sozinho em loop (sem som). As informações entram em caixas claras que rolam por cima (Mover, Nutrir, Integrar), alternando lados no desktop para não cobrir o assunto. No desktop, o enquadramento acompanha o assunto do vídeo vertical (panorâmica em `film.js`); no celular, o vídeo ocupa a tela inteira.
 - Fundos: o padrão da marca (`assets/padrao-muni.svg`, MU/NI + "ESPAÇO INTEGRADO DE SAÚDE") preenche seções via `.pattern-bg`, recolorido por `--pattern-color` e `--pattern-opacity`, em deriva lenta.
 - Cores da marca aparecem em movimento (`.color-flow`), nunca como paleta exposta com códigos.
+- Lanterna (`[data-spotlight]` + `.spot-layer`): o cursor acende o padrão MU/NI no fundo; no celular a luz passeia sozinha. Usada em "Como funciona" (faixa escura, traço ondulado, etapa em foco e contador) e em "Perto. Mesmo de longe." (cartões que inclinam com o cursor, `[data-tilt]`).
 - Não sobreponha vários blocos de texto ou logos sobre o assunto principal do filme.
 
 ## Interações
 
-`site.js` controla menu, cabeçalho, revelações na rolagem, trilho de etapas, galerias, lista de caminhos (foto que acompanha o cursor), escolhas de contato e o botão "Pausar animações" (preferência guardada no navegador, avisada ao filme pelo evento `muni:motion`). `film.js` toca o filme de 12 segundos em loop quando visível, com enquadramento por tempo (`framing`) e capítulos. Preserve o botão de pausar, pular filme, poster, pausa fora da tela e suporte a `prefers-reduced-motion` (sem autoplay).
+`site.js` controla menu, cabeçalho, revelações na rolagem, lanterna, cartões inclináveis, etapas do "Como funciona", galerias, lista de caminhos (foto que acompanha o cursor), escolhas de contato e o botão "Pausar animações" (preferência guardada no navegador, avisada ao filme pelo evento `muni:motion`). `film.js` toca o filme de 12 segundos em loop quando visível, com enquadramento por tempo (`framing`) e capítulos. Preserve o botão de pausar, pular filme, poster, pausa fora da tela e suporte a `prefers-reduced-motion` (sem autoplay).
 
 Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação por teclado, foco visível, textos alternativos e `playsinline`/`muted` do vídeo. Evite aumentar muito o arquivo de vídeo; a versão atual tem aproximadamente 3,4 MB (H.264, 720×1280, sem áudio).
 

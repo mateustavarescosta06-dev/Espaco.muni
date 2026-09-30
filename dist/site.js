@@ -67,10 +67,11 @@
     reveals.forEach(el=>io.observe(el));
   }else reveals.forEach(el=>el.classList.add('is-in'));
 
-  /* Como funciona: trilho de progresso */
+  /* Como funciona: traço ondulado, etapa em foco e contador */
   const process=document.querySelector('[data-process]');
-  const rail=process?.querySelector('.process-rail');
   const steps=process?[...process.querySelectorAll('[data-step]')]:[];
+  const counter=document.querySelector('[data-count]');
+  let currentStep=-1;
 
   /* Imagens com leve parallax */
   const parallax=[...document.querySelectorAll('[data-parallax]')];
@@ -83,8 +84,14 @@
     if(process){
       const rect=process.getBoundingClientRect();
       const line=vh*.6;
-      rail.style.setProperty('--progress',clamp((line-rect.top)/rect.height));
-      steps.forEach(step=>step.classList.toggle('is-on',step.getBoundingClientRect().top<line));
+      process.style.setProperty('--progress',clamp((line-rect.top)/rect.height).toFixed(4));
+      let current=0;
+      steps.forEach((step,i)=>{const on=step.getBoundingClientRect().top<line;step.classList.toggle('is-on',on);if(on)current=i;});
+      steps.forEach((step,i)=>step.classList.toggle('is-current',i===current));
+      if(counter&&current!==currentStep){
+        currentStep=current;counter.textContent=String(current+1).padStart(2,'0');
+        const box=counter.parentElement;box.classList.remove('bump');void box.offsetWidth;box.classList.add('bump');
+      }
     }
     parallax.forEach(el=>{
       if(!motion.on){el.style.removeProperty('--parallax');return;}
@@ -151,6 +158,50 @@
   if(['nutricao','treinamento','integrado'].includes(params.get('interesse')))interest=params.get('interesse');
   if(['presencial','online'].includes(params.get('formato')))format=params.get('formato');
   updateChoice();
+
+  /* Lanterna: o cursor acende o padrão no fundo; no toque, a luz passeia sozinha. */
+  const finePointer=matchMedia('(hover: hover) and (pointer: fine)');
+  document.querySelectorAll('[data-spotlight]').forEach(section=>{
+    let visible=false,raf=0,start=0;
+    const set=(x,y)=>{section.style.setProperty('--mx',`${x}px`);section.style.setProperty('--my',`${y}px`);};
+    section.addEventListener('pointermove',event=>{
+      if(!finePointer.matches||!motion.on)return;
+      const rect=section.getBoundingClientRect();
+      set(event.clientX-rect.left,event.clientY-rect.top);section.classList.add('is-lit');
+    },{passive:true});
+    section.addEventListener('pointerleave',()=>{if(finePointer.matches)section.classList.remove('is-lit');},{passive:true});
+    const wander=time=>{
+      raf=0;
+      if(!visible||finePointer.matches||!motion.on){section.classList.remove('is-lit');return;}
+      if(!start)start=time;
+      const t=(time-start)/1000,w=section.clientWidth,h=section.clientHeight;
+      set(w*(.5+.38*Math.sin(t*.35)),h*(.5+.36*Math.sin(t*.5+1.2)));
+      section.classList.add('is-lit');
+      raf=requestAnimationFrame(wander);
+    };
+    new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;if(visible&&!raf)raf=requestAnimationFrame(wander);}).observe(section);
+    motion.listeners.push(on=>{if(!on)section.classList.remove('is-lit');else if(visible&&!raf)raf=requestAnimationFrame(wander);});
+  });
+
+  /* Cartões que inclinam com o cursor */
+  document.querySelectorAll('[data-tilt]').forEach(card=>{
+    card.addEventListener('pointermove',event=>{
+      if(!finePointer.matches||!motion.on)return;
+      const rect=card.getBoundingClientRect();
+      const x=(event.clientX-rect.left)/rect.width,y=(event.clientY-rect.top)/rect.height;
+      card.style.setProperty('--ry',`${((x-.5)*8).toFixed(2)}deg`);
+      card.style.setProperty('--rx',`${((.5-y)*8).toFixed(2)}deg`);
+      card.style.setProperty('--px',`${((.5-x)*18).toFixed(1)}px`);
+      card.style.setProperty('--py',`${((.5-y)*18).toFixed(1)}px`);
+      card.style.setProperty('--gx',`${(x*100).toFixed(1)}%`);
+      card.style.setProperty('--gy',`${(y*100).toFixed(1)}%`);
+      card.classList.add('is-tilting');
+    },{passive:true});
+    card.addEventListener('pointerleave',()=>{
+      card.classList.remove('is-tilting');
+      ['--rx','--ry','--px','--py'].forEach(v=>card.style.removeProperty(v));
+    },{passive:true});
+  });
 
   /* Caminhos: no desktop, a foto do caminho acompanha o cursor sobre a lista. */
   document.querySelectorAll('[data-paths]').forEach(list=>{

@@ -105,21 +105,26 @@
   </div>
 </section>
 
-<section class="section process" id="como-funciona">
+<section class="section process spotlight pattern-bg" id="como-funciona" data-spotlight>
+  <div class="spot-layer" aria-hidden="true"></div>
   <div class="wrap process-grid">
     <div class="process-head" data-reveal>
       <span class="eyebrow">Como funciona</span>
       <h2>Do primeiro contato <em>à vida real.</em></h2>
       <p>Sem fórmulas prontas. O cuidado começa pelo que faz sentido para você agora.</p>
-      <a class="button solid" href="/contato/">Dar o primeiro passo</a>
+      <a class="button lime" href="/contato/">Dar o primeiro passo</a>
+      <div class="process-count" aria-hidden="true"><span data-count>01</span><small>/ 04</small></div>
     </div>
     <div class="process-steps" data-process>
-      <span class="process-rail" aria-hidden="true"><span></span></span>
+      <svg class="process-wave" viewBox="0 0 40 1000" preserveAspectRatio="none" aria-hidden="true">
+        <path class="track" d="M20 0C38 60 2 130 20 250S38 380 20 500S2 630 20 750S38 880 20 1000" pathLength="1"/>
+        <path class="done" d="M20 0C38 60 2 130 20 250S38 380 20 500S2 630 20 750S38 880 20 1000" pathLength="1"/>
+      </svg>
       <ol>
-      <li data-step><span class="step-num">01</span><h3>Conversa</h3><p>Você conta o que busca. A equipe explica os atendimentos e a disponibilidade.</p></li>
-      <li data-step><span class="step-num">02</span><h3>Escuta</h3><p>Seus hábitos, seus objetivos e sua rotina entram na conversa.</p></li>
-      <li data-step><span class="step-num">03</span><h3>Plano</h3><p>Nutrição, treino ou os dois, pensados para você e para o seu momento.</p></li>
-      <li data-step><span class="step-num">04</span><h3>Vida real</h3><p>Um cuidado que cabe na rotina e acompanha você, em Jundiaí ou online.</p></li>
+        <li data-step><span class="step-num">01 — Primeiro passo</span><h3>Conversa</h3><p>Você conta o que busca. A equipe explica os atendimentos e a disponibilidade.</p></li>
+        <li data-step><span class="step-num">02 — Sem pressa</span><h3>Escuta</h3><p>Seus hábitos, seus objetivos e sua rotina entram na conversa.</p></li>
+        <li data-step><span class="step-num">03 — Sob medida</span><h3>Plano</h3><p>Nutrição, treino ou os dois, pensados para você e para o seu momento.</p></li>
+        <li data-step><span class="step-num">04 — No dia a dia</span><h3>Vida <em>real</em></h3><p>Um cuidado que cabe na rotina e acompanha você, em Jundiaí ou online.</p></li>
       </ol>
     </div>
   </div>
@@ -133,20 +138,27 @@
   </div>
 </section>
 
-<section class="section formats">
+<section class="section formats spotlight pattern-bg soft" data-spotlight>
+  <div class="spot-layer" aria-hidden="true"></div>
   <div class="wrap">
-    <div class="section-head" data-reveal>
+    <div class="formats-head" data-reveal>
       <span class="eyebrow">Onde você estiver</span>
       <h2>Perto. <em>Mesmo de longe.</em></h2>
+      <p>Presencial em Jundiaí ou online: o mesmo cuidado, no formato que cabe na sua rotina.</p>
     </div>
-    <div class="formats-grid">
-      <a class="format-card" href="/contato/?formato=presencial" data-reveal>
-        <img src="/assets/encontro-muni-recorte.jpg" alt="Pessoas reunidas no Espaço MUNI, em frente à parede com a marca" loading="lazy">
-        <div class="format-body"><div><span class="eyebrow">Presencial</span><h3>Em <em>Jundiaí.</em></h3><p>Um espaço para se cuidar de perto.</p></div><span class="format-go" aria-hidden="true">→</span></div>
+    <div class="formats-grid" data-reveal="2">
+      <a class="format-card is-main" href="/contato/?formato=presencial" data-tilt>
+        <span class="format-media"><img src="/assets/encontro-muni-recorte.jpg" alt="Pessoas reunidas no Espaço MUNI, em frente à parede com a marca" loading="lazy"></span>
+        <span class="format-sheen" aria-hidden="true"></span>
+        <span class="format-meta">23°11′S · 46°54′O</span>
+        <span class="format-body"><span><span class="eyebrow">Presencial</span><span class="format-title">Em <em>Jundiaí.</em></span><span class="format-text">Um espaço para se cuidar de perto.</span></span><span class="format-go" aria-hidden="true">→</span></span>
       </a>
-      <a class="format-card" href="/contato/?formato=online" data-reveal="2">
-        <img src="/assets/muni-digital.jpg" alt="Notebook com a identidade MUNI sobre uma poltrona" loading="lazy">
-        <div class="format-body"><div><span class="eyebrow">Online</span><h3>Onde você <em>estiver.</em></h3><p>O mesmo cuidado, na sua rotina.</p></div><span class="format-go" aria-hidden="true">→</span></div>
+      <span class="formats-and" aria-hidden="true">&amp;</span>
+      <a class="format-card is-offset" href="/contato/?formato=online" data-tilt>
+        <span class="format-media"><img src="/assets/muni-digital.jpg" alt="Notebook com a identidade MUNI sobre uma poltrona" loading="lazy"></span>
+        <span class="format-sheen" aria-hidden="true"></span>
+        <span class="format-meta">Online · onde você estiver</span>
+        <span class="format-body"><span><span class="eyebrow">Online</span><span class="format-title">Onde você <em>estiver.</em></span><span class="format-text">O mesmo cuidado, na sua rotina.</span></span><span class="format-go" aria-hidden="true">→</span></span>
       </a>
     </div>
   </div>

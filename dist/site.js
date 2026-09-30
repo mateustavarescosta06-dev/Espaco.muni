@@ -73,6 +73,21 @@
   const counter=document.querySelector('[data-count]');
   let currentStep=-1;
 
+  /* Efeitos ligados à rolagem: cada [data-scrub] recebe --p (0 → 1) e --p2 (mais rápido).
+     Em [data-scrub=pin] (seção fixa alta), --p mede o avanço dentro da própria seção. */
+  const scrubs=[...document.querySelectorAll('[data-scrub]')];
+  function scrub(vh){
+    scrubs.forEach(el=>{
+      if(!motion.on){el.style.setProperty('--p',1);el.style.setProperty('--p2',1);return;}
+      const r=el.getBoundingClientRect();
+      if(r.bottom<-vh||r.top>vh*2)return;
+      const pin=el.classList.contains('merge');
+      const p=pin?clamp(-r.top/Math.max(1,(r.height-vh)*.75)):clamp((vh-r.top)/(vh+r.height));
+      el.style.setProperty('--p',p.toFixed(4));
+      el.style.setProperty('--p2',clamp(p*2.4).toFixed(4));
+    });
+  }
+
   /* Imagens com leve parallax */
   const parallax=[...document.querySelectorAll('[data-parallax]')];
 
@@ -81,6 +96,7 @@
     ticking=0;
     updateHeader();
     const vh=innerHeight;
+    scrub(vh);
     if(process){
       const rect=process.getBoundingClientRect();
       const line=vh*.6;

@@ -31,7 +31,12 @@ Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação
 
 As URLs absolutas (canonical, `og:url`, `og:image`, `sitemap.xml`, `robots.txt`, dados estruturados) usam `https://espacomuni.vercel.app`. Se o domínio oficial mudar, troque esse endereço em todos esses lugares. A imagem de compartilhamento é `assets/og-muni.jpg` (1200×630); os ícones são `favicon-32.png`, `icon-512.png` e `apple-touch-icon.png`.
 
-A página `/juntos/` é "Nutrição + treino" (duas trilhas, Bia e Bruno, que se encontram; situações práticas e FAQ). As páginas de nutrição e treinamento têm a fala do profissional com a narrativa (`.voice`), capítulos com foto, "O que você recebe" (`.receive`) e um convite para `/juntos/` (`.cross`).
+Linguagem de papel (vinda dos posts da MUNI): papel de caderno rasgado (`.paper-lined.paper-torn`), post-it com clipe (`.paper-sticky` + `.clip`), fita (`.tape`) e marca-texto lima (`<mark>`). Use nas páginas de serviço para as falas e os convites; não transforme tudo em papel.
+
+- Treinamento: abertura em tela cheia (`.bleed`), frase do Bruno em papel rasgado, fita métrica que corre com a rolagem na avaliação física (`.measure`), foto grande com a narrativa (`.feature`) e calendário de seis semanas com o ritmo de feedback, dias 7, 22 e 37 (`.cal`).
+- Nutrição: prato em tela cheia, post-it da Bia, ficha de "Primeira consulta" (`.chart-sheet`), polaroids arrastáveis (`.snaps`) e convite em papel.
+- `/juntos/` (Nutrição + treino): duas fotos que se juntam com a rolagem (`.merge`, "O match perfeito"), a conta plano + treino = emagrecer com saúde (`.sum`), bilhetes da Bia e do Bruno ligados por uma seta (`.pair`), foto da dupla, situações e FAQ.
+- `[data-scrub]` recebe `--p`/`--p2` conforme a rolagem (em `site.js`); com "Pausar animações" fica em 1.
 
 A página `/universo/` é a "Sobre a MUNI" (o endereço foi mantido para não quebrar links).
 

@@ -16,17 +16,15 @@ Abra `http://localhost:8000`. Sirva sempre a pasta `dist` como raiz, pois as rot
 
 ## Estrutura
 
-- `dist/index.html`: início, campanhas, filme interativo e caminhos de atendimento.
-- `dist/nutricao/index.html`: nutrição.
-- `dist/treinamento/index.html`: treinamento.
-- `dist/universo/index.html`: universo da marca.
-- `dist/contato/index.html`: seleção de interesse e canais de contato.
-- `dist/style.css`: estilos e responsividade.
-- `dist/site.js`: navegação, campanhas, galeria, contato e fundo interativo.
-- `dist/film.js`: filme controlado pela rolagem e reprodução manual.
-- `dist/assets/`: logotipo, imagens editoriais, texturas e o vídeo do filme.
-- `.openai/hosting.json`: configuração do projeto publicado no ChatGPT Sites.
-- `CLAUDE.md`: orientações para Claude Code/Codex.
+- `dist/index.html`: início. Abertura com o filme de fundo ao longo de três telas e caixas editoriais (Mover, Nutrir, Integrar), capas do universo MUNI, "Como funciona", manifesto sobre o padrão da marca, formatos (Jundiaí e online), galeria sobre cores em movimento e lista de caminhos.
+- `dist/nutricao/index.html` e `dist/treinamento/index.html`: abertura, cuidado na prática, imagens editoriais e convite para nutrição + treinamento.
+- `dist/juntos/index.html`: nutrição + treino, com as duas trilhas, situações práticas e perguntas frequentes.
+- `dist/universo/index.html`: universo da marca, manifesto, galeria interativa e galeria horizontal.
+- `dist/contato/index.html`: canais oficiais e seleção de interesse/formato. Aceita `?interesse=nutricao|treinamento|integrado` e `?formato=presencial|online`.
+- `dist/style.css`: tokens da marca, componentes e regras responsivas compartilhados.
+- `dist/site.js`: menu, cabeçalho, revelações na rolagem, trilho de etapas, galerias, lista de caminhos, escolhas de contato e o botão "Pausar animações".
+- `dist/film.js`: filme de fundo da abertura em loop, enquadramento que acompanha o assunto, capítulos e botão de pausa.
+- `dist/assets/`: logotipo, imagens e vídeo. Os arquivos estão incluídos no repositório.
 
 `dist` é o código-fonte efetivo deste projeto, apesar do nome. O repositório inclui os assets originais exportados da versão publicada, inclusive `muni-scroll-film.mp4`.
 
@@ -49,6 +47,14 @@ Os assets estão versionados em `dist/assets/`. O arquivo `scripts/download-asse
 ## Publicação
 
 O endereço atual do ChatGPT Sites **não fica sincronizado automaticamente com o GitHub**. Alterações neste repositório não mudam a URL publicada até que sejam publicadas novamente no Sites ou que se configure uma hospedagem ligada ao GitHub servindo a pasta `dist`.
+
+## Prévia na Vercel
+
+`vercel.json` publica a pasta `dist` como site estático, sem build. Importe o repositório em vercel.com (Add New → Project), mantenha as configurações detectadas e faça o deploy. Cada branch enviada ao GitHub ganha uma URL de prévia própria.
+
+## Imagens
+
+Depois de adicionar fotos em `dist/assets/`, rode `python3 scripts/otimizar-imagens.py` para gerar as versões WebP usadas pelo site.
 
 ## Verificações rápidas
 

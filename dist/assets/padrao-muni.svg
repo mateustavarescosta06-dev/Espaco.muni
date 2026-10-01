@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="232" height="290" viewBox="0 0 232 290">
+  <g fill="none" stroke="#000" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M12 104V16l35 58 35-58v88"/>
+    <path d="M110 16v56a33 33 0 0 0 66 0V16"/>
+    <path d="M12 220v-88l70 88v-88"/>
+    <path d="M143 132v88"/>
+  </g>
+  <text transform="translate(214 220) rotate(-90)" textLength="204" lengthAdjust="spacingAndGlyphs" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing=".5">ESPAÇO INTEGRADO DE SAÚDE</text>
+</svg>

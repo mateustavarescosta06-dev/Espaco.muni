@@ -2,7 +2,7 @@
 
 ## Estrutura
 
-Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o código-fonte efetivo e todos os assets usados pelo site. Não há build nem dependências npm. Não migre para React, Next ou outro framework sem pedido explícito. Veja `README.md` para executar localmente e conhecer as páginas.
+Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o código-fonte efetivo e todos os assets usados pelo site. Não há gerador de páginas: edite o HTML de cada página diretamente (cabeçalho e rodapé se repetem nas cinco páginas; ao mudar um, mude todos). Não há build nem dependências npm. Não migre para React, Next ou outro framework sem pedido explícito. Veja `README.md` para executar localmente e conhecer as páginas.
 
 ## Direção visual aprovada
 
@@ -10,22 +10,51 @@ Este é um site estático em HTML, CSS e JavaScript puro. `dist/` contém o cód
 - Paleta e tipografia já definidas nas variáveis de `dist/style.css`.
 - Priorize frases curtas, fotografia editorial, textura e espaços de respiro.
 - Use o logotipo real de `dist/assets/marca-muni.png`. Não substitua a marca por um ícone genérico.
-- A abertura foi corrigida para evitar sobreposição: no celular, a foto fica acima de título e botão. Preserve essa separação.
-- O filme tem um espaço próprio, após a abertura. Desktop: coluna de texto ao lado. Mobile: texto curto sobre faixa com contraste. Não sobreponha vários blocos de texto ou logos sobre o assunto principal.
+- Estética: wellness premium + editorial de moda + movimento + comida. Títulos em Cormorant Garamond com itálico de destaque; textos e rótulos em DM Sans; botões retos em caixa alta com espaçamento; cantos retos; tom pedra (#858077) nos botões principais.
+- Abertura da home: o filme fica fixo ao fundo ao longo de três telas de rolagem, tocando sozinho em loop (sem som). As informações entram em caixas claras que rolam por cima (Mover, Nutrir, Integrar), alternando lados no desktop para não cobrir o assunto. No desktop, o enquadramento acompanha o assunto do vídeo vertical (panorâmica em `film.js`). No celular, a abertura ocupa uma tela: vídeo em tela cheia, título no alto e os três cards numa fileira deslizante (estilo stories) sincronizada com as cenas; arrastar um card leva o vídeo à cena dele.
+- Fundos: o padrão da marca (`assets/padrao-muni.svg`, MU/NI + "ESPAÇO INTEGRADO DE SAÚDE") preenche seções via `.pattern-bg`, recolorido por `--pattern-color` e `--pattern-opacity`, em deriva lenta.
+- Cores da marca aparecem em movimento (`.color-flow`), nunca como paleta exposta com códigos.
+- Lanterna (`[data-spotlight]` + `.spot-layer`): o cursor acende o padrão MU/NI no fundo; no celular a luz passeia sozinha. Usada em "Como funciona" (faixa escura, traço ondulado, etapa em foco e contador).
+- "Perto. Mesmo de longe.": seletor Presencial/Online (`[data-format-switch]`) com fotos reais do espaço em arcos, ecoando os arcos do símbolo M. Não use a foto do grupo da inauguração.
+- Fundos integrados: as seções se fundem às vizinhas por degradês (bloco "Fundos integrados" em `style.css`); ao mudar a ordem das seções, ajuste esses degradês.
+- Equipe: foto da Bia e do Bruno (`equipe-muni.jpg`) dissolvida no verde-sálvia da parede (#88A597); não recorte a foto da dupla em retratos separados.
+- O M se formando (`[data-mform]`): o símbolo MUNI é desenhado num único traço contínuo, na ordem da animação oficial (haste do arco alto → diagonal → arco direito → base → laço → onda → arco pequeno). O caminho fica no SVG do manifesto; a animação é CSS (`stroke-dashoffset`). Toque para repetir.
+- Não sobreponha vários blocos de texto ou logos sobre o assunto principal do filme.
 
 ## Interações
 
-`site.js` controla o menu, as campanhas, a galeria, escolhas da página de contato e o fundo com marca repetida. `film.js` controla o filme de 12 segundos com a rolagem normal do documento. Preserve avanço e retorno, reprodução manual, pular filme, poster, carregamento próximo da seção e suporte a `prefers-reduced-motion`.
+`site.js` controla menu, cabeçalho, revelações na rolagem, lanterna, cartões inclináveis, etapas do "Como funciona", galerias, lista de caminhos (foto que acompanha o cursor), escolhas de contato e o botão "Pausar animações" (preferência guardada no navegador, avisada ao filme pelo evento `muni:motion`). `film.js` toca o filme de 12 segundos em loop quando visível, com enquadramento por tempo (`framing`) e capítulos. Preserve o botão de pausar, pular filme, poster, pausa fora da tela e suporte a `prefers-reduced-motion` (sem autoplay).
 
-Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação por teclado, foco visível, textos alternativos e `playsinline`/`muted` do vídeo. Evite aumentar muito o arquivo de vídeo; a versão atual tem aproximadamente 3 MB.
+Não capture a roda do mouse nem bloqueie o gesto de rolar. Preserve navegação por teclado, foco visível, textos alternativos e `playsinline`/`muted` do vídeo. Evite aumentar muito o arquivo de vídeo; a versão atual tem aproximadamente 3,4 MB (H.264, 720×1280, sem áudio).
+
+## Endereço do site e SEO
+
+As URLs absolutas (canonical, `og:url`, `og:image`, `sitemap.xml`, `robots.txt`, dados estruturados) usam `https://espacomuni.vercel.app`. Se o domínio oficial mudar, troque esse endereço em todos esses lugares. A imagem de compartilhamento é `assets/og-muni.jpg` (1200×630); os ícones são `favicon-32.png`, `icon-512.png` e `apple-touch-icon.png`.
+
+Linguagem de papel (vinda dos posts da MUNI): papel de caderno rasgado (`.paper-lined.paper-torn`), post-it com clipe (`.paper-sticky` + `.clip`), fita (`.tape`) e marca-texto lima (`<mark>`). Use nas falas, nos convites e em poucos blocos-chave; não transforme tudo em papel. Na home: cards do filme em papel, colunas de "Emagrecer não é só…" como post-it e folha de caderno, faixa de fotos como polaroids com fita, endereço num bilhete e convite final em post-it. A inclinação usa a propriedade `rotate` (classes `.tilt-soft-*`) para não brigar com a animação de entrada, que usa `transform`.
+
+- Treinamento: abertura em tela cheia (`.bleed`), frase do Bruno em papel rasgado, fita métrica que corre com a rolagem na avaliação física (`.measure`), foto grande com a narrativa (`.feature`) e calendário de seis semanas com o ritmo de feedback, dias 7, 22 e 37 (`.cal`).
+- Nutrição: prato em tela cheia, post-it da Bia, ficha de "Primeira consulta" (`.chart-sheet`), polaroids arrastáveis (`.snaps`) e convite em papel.
+- `/juntos/` (Nutrição + treino): duas fotos que se juntam com a rolagem (`.merge`, "O match perfeito"), a conta plano + treino = emagrecer com saúde (`.sum`), bilhetes da Bia e do Bruno ligados por uma seta (`.pair`), foto da dupla, situações e FAQ.
+- `[data-scrub]` recebe `--p`/`--p2` conforme a rolagem (em `site.js`); com "Pausar animações" fica em 1.
+
+A página `/universo/` é a "Sobre a MUNI" (o endereço foi mantido para não quebrar links).
+
+## Contato e WhatsApp
+
+Os botões com `data-wa` (interesse/formato) e o botão principal do contato (`data-wa-contact`) viram links de WhatsApp com mensagem pronta quando a constante `WHATSAPP` em `site.js` recebe o número (DDI + DDD + número, só dígitos). Com ela vazia, tudo continua levando à página de contato e ao Linktree.
 
 ## Assets
 
-Os arquivos visuais originais estão em `dist/assets/`, inclusive o vídeo `muni-scroll-film.mp4`. `scripts/download-assets.sh` e `.github/workflows/sync-muni-assets.yml` existem apenas como mecanismos de recuperação/sincronização com a versão publicada; para edições normais, trabalhe diretamente nos arquivos locais do repositório.
+Os arquivos visuais originais estão em `dist/assets/`, inclusive o vídeo `muni-scroll-film.mp4`. Depois de adicionar ou trocar fotos, rode `python3 scripts/otimizar-imagens.py` (requer Pillow): ele gera `-1200.webp` e `-640.webp` e reescreve as `<img>` com `srcset`. As páginas usam essas versões; os originais ficam como fonte. No celular, o filme carrega `muni-scroll-film-mobile.mp4` (540×960). `scripts/download-assets.sh` e `.github/workflows/sync-muni-assets.yml` existem apenas como mecanismos de recuperação/sincronização com a versão publicada; para edições normais, trabalhe diretamente nos arquivos locais do repositório.
 
 ## Conteúdo e publicação
 
-Não invente nomes de profissionais, registros, preços, resultados, depoimentos ou serviços. As imagens editoriais e o filme gerados são peças de campanha, não registros documentais de pacientes ou do espaço físico. Os contatos atuais vêm do Instagram `@espaco.muni` e de `https://linktr.ee/espaco.muni`.
+Não invente nomes de profissionais, registros, preços, resultados, depoimentos ou serviços. Fatos confirmados pela MUNI (posts oficiais e o próprio cliente): Bia cuida da nutrição e Bruno do treino (use só os primeiros nomes); treino personalizado no app, com acompanhamento e ajustes; avaliação física completa (adipometria, circunferências, bioimpedância, avaliação postural) só no presencial. Endereço: Rua do Retiro, 424, Sala 114, Vila Virgínia, Jundiaí – SP. Atendimento seg a sex 8h–20h e sáb 8h–14h; agendamento e confirmação de consultas seg a sex 8h–18h.
+
+Página de nutrição: vários textos (consulta, educação alimentar, acompanhamento entre consultas, "Nutrição e treino, na mesma direção", situações e FAQ) vieram de sugestões ainda não validadas pela equipe. Mantenha-os sem prometer frequência de retornos, canais ou formatos de consulta; quando a equipe confirmar, atualize com os dados reais.
+
+Narrativa central: emagrecer com saúde não é só comer menos nem treinar mais. Na nutrição, déficit calórico com saciedade e adesão (o melhor plano é o que você consegue seguir sem ser um fardo). No treino, não é só queimar caloria: preservar massa muscular e perder peso com qualidade. Escolhas que você consegue manter. As imagens editoriais e o filme gerados são peças de campanha, não registros documentais de pacientes ou do espaço físico. Os contatos atuais vêm do Instagram `@espaco.muni` e de `https://linktr.ee/espaco.muni`.
 
 O GitHub não publica automaticamente no endereço atual do ChatGPT Sites. Preserve `.openai/hosting.json` e explique essa separação se a tarefa envolver publicação. Nunca inclua tokens, arquivos `.env` reais ou credenciais no repositório.
 
